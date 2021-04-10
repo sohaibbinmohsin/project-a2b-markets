@@ -5,6 +5,10 @@ import App from './App';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Location from './Components/Location.js'
 import reportWebVitals from './reportWebVitals';
+import SignUp from './Components/SignUp'
+import Partner from './Components/partner'
+import Verification from './Components/verification'
+import LOGIN from './Components/login'
 
 ReactDOM.render(
   <Router>
@@ -14,6 +18,7 @@ ReactDOM.render(
       <Route path="/SignUp" component={SignUp} />
       <Route path="/partner" component={Partner} />
       <Route path="/verification" component={Verification} />
+      <Route path="/login" component={LOGIN} />
     </Switch>
   </Router>,
   document.getElementById('root')

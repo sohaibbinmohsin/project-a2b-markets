@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{ height:220vh; margin:0; }
+body{ 
+  display:flex; 
+  flex-direction:column; 
+}
+
+.form
+{
+  position: relative;
+  background-color:white;
+  border: 2px solid black;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  
+  justify-content: center;
+  margin: 60px;
+  box-shadow: 5px 5px;
+}
+
+.form li{
+  padding: 6px;
+  list-style-type: none;
+  align-items: center;
+
+  
+  font-weight: bold;
+}
+.form li input
+{
+  border-radius: 2px;
+  width: 85%;
+  height: 2vw;
+  
+  box-shadow: 2px 2px gray;
+  list-style-type: none;
+}
+header
+{ min-height:70px; 
+  background:#FFD100; }
+
+
+button
+{
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+}
+button:hover{
+  background-color: black;
+  color: #FFD100;
+}
+.button-primary
+{
+  width: 25%;
+  border: 0px solid black;
+  border-radius: 180px;
+  padding: 6px;
+  background-color: #FFD100;
+  color: black;
+
+}
+.container1
+{
+  position: relative;
+  
+  height: 30%;
+}
+.container1 h3
+{
+  text-align:  center;
+  
+ 
+}
+.container1 h4
+{
+  text-align:  center;
+  font-size: 20px;
+  font-weight: 300;
+
+}
+.table-points
+{
+ 
+  width: 100%;
+  height: 80%;
+  display: flex;
+  
+}
+.table-points div{
+  border: 2px solid black;
+  width: 32%;
+  margin: 1%;
+  height: 85%;
+}
+.table-points p{
+  text-align: center;
+  margin: 10px;
+}
+.table-points img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:45%;
+}
+/* .bottom-right
+{
+  margin-left: 150px;
+  text-align: right;
+  display: i;
+  right: -16px;
+  font-size: 18px;
+} */
+
+.image-holder
+{
+  width: 100vw;
+  right: 0px;
+  height: 60vw;
+ position: absolute;
+ 
+}
+.image-holder img
+{
+
+         max-width: 100%;
+        max-height: 100%;
+        display: block; 
+        right: 0px;
+        position: absolute;
+}
+hr{
+  margin-top: 100px; 
+  border: none;
+  height: 2px;
+  background: black;
+  margin-bottom: 50px;
+}
+
+.page-container
+{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+.page-wrap
+{
+  flex: 1;
+    
+}
+@media only screen and (min-width: 360px) {
+  /* For mobile: */
+  .form {
+    width: 54%;
+     margin: 60px;
+    
+  }
+  
+  .button-primary
+{
+  width: 25%;
+ 
+  
+}
+.form li input
+{
+  height: 4vw;
+}
+.outer img
+{
+
+  width: 60%;
+  height: 69%;
+}
+button
+{
+  display: block;
+  margin: 0 auto;
+  width: 25%;
+}
+
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .form {
+    width: 40%;
+ 
+  }
+  .form li input
+  {
+    width: 85%;
+  }
+  .button-primary
+  {
+    width: 25%;
+   
+    
+  }
+  .outer img
+{
+
+  width: 60%;
+  height: 69%;
+}
+
+button
+{
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .form {
+    width: 30%;
+    
+  }
+  .form li input
+{
+  height: 4vw;
+}
+  .button-primary
+{
+  width: 25%;
+
+ 
+  
+}
+.outer img
+{
+
+
+  width: 60%;
+  height: 69%;
+}
+button
+{
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+}
+
+}
+

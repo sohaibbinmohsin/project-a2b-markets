@@ -41,6 +41,7 @@ function LoginScreen(props) {
             <input type="password" id="password" name="password" class="form-control" placeholder="  Enter Password" onChange={(e)=>setPassword(e.target.value)}/>
 
           </li>
+          <li> <a href="/reset_password"  style={{color:'#FFD100'}}>Forgot Password?</a></li>
           <li>
             <label >Login as </label>
             <br/>

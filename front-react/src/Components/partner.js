@@ -103,10 +103,10 @@ that I have read and understood Deliveroo Privacy Policy. </p>
               </p>
               
               </div>
-          <Footer/>
+          
               
           </div>
-          
+          <Footer/>
           
       </div>
      

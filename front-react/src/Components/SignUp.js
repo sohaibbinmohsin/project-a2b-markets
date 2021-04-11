@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import './login_signup.css';
 
 function SignupScreen(props) {
-  const [userName, setUsername]=useState('')
+  const [name, setUsername]=useState('')
   const [password, setPassword]=useState('')
-  const [phone, setPhone]=useState('')
-  const [address, setAddress]=useState('')
-  
+  const [phoneno, setPhone]=useState('')
+  const [email_address, setEmailAddress]=useState('')
+  const [confirmPassword, setConfirmPassword]=useState('')
   
 
  
@@ -36,6 +36,10 @@ function SignupScreen(props) {
             <br/>
             <input type="text" name="username" placeholder="  Enter Username" class="form-control" onChange={(e)=>setUsername(e.target.value)}/>
           </li>
+          <li>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="  Enter your email" class="form-control" onChange={(e)=>setEmailAddress(e.target.value)}></input>
+          </li>
           
           <li>
             <label for="password">Password</label>
@@ -44,22 +48,21 @@ function SignupScreen(props) {
 
           </li>
           <li>
+            <label for="confirm-password"> Confirm Password</label>
+            <br/>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="  Enter your password again" class="form-control" onChange={(e)=>setConfirmPassword(e.target.value)}/>
+
+          </li>
+          <li>
             <label for="phone">Phone Number</label>
             <br/>
             <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control" placeholder="  Enter your phone number" onChange={(e)=>setPhone(e.target.value)}/>
 
-          </li>
-          <li>
-            <label for="address">Address</label>
-            <br/>
-            <input type="text" id="address" name="address"  placeholder="  Enter your address" class="form-control" onChange={(e)=>setAddress(e.target.value)}/>
-
-          </li>
-          
+          </li>          
           <li>
             <button type="submit" className="button-primary">SIGNUP</button>
           </li>
-          <li>Already have an account?<a href="#" style={{color:'#FFD100'}}>Login</a> here</li>
+          <li>Already have an account?<a href="/login" style={{color:'#FFD100'}}>Login</a> here</li>
           
 
 

@@ -1,4 +1,4 @@
-const location =  require('../models/location.js')
+const location =  require('../models/location.model.js')
 const { config } = require('dotenv')
 config()
 

@@ -2,6 +2,8 @@ import React, {useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import './shopping_cart.css';
+import Footer from './footer.js'
+import './footer.css'
 
 function SignupScreen(props) {
  
@@ -53,6 +55,9 @@ function SignupScreen(props) {
            </div>
        </div>
        <a href="/proceed_order"  style={{color:'#FFD100'}}><button>Place Order</button></a>
+       <div >
+                <Footer />
+            </div>
     </div>
   );
 }

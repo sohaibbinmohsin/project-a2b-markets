@@ -2,7 +2,6 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import {  GlobalStyle } from './GlobalStyle';
 import Footer from './Components/footer.js';
 import Navbaar from './Components/indexPage/Navbar.js';
 import Markets from './Components/indexPage/Markets';
@@ -20,7 +19,6 @@ function App() {
       </div>
     <Router>
       <Navbaar />
-      <GlobalStyle />
       <div className="searchBox">
         <input className="textBox" type="text" placeholder="Enter your address"></input>
           {/* <i className="locationIcon" class="fa fa-location" ></i>  */}

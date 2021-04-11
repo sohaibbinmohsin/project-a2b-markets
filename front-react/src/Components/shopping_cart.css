@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+  }
+  
+  .container-1
+{
+    width: 30%;
+    display: table;
+ 
+  
+    border: 2px solid black;
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 5%;
+}
+.container-1 p{
+    font-size: 25px;
+    margin-top: 2%;
+}
+.container-1 b,p{
+   position: relative;
+   float: right;
+    
+}
+.container-2 b{
+    position: relative;
+    float: right;
+    
+ }
+.container-2
+{
+    padding: 10px;
+    width: 30%;
+    border: 2px solid black;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+.container-2 h4
+{
+    font-size: 20px;
+}
+.shopping_container h3
+{
+    margin-top: 100px;
+    text-align: center;
+    
+}
+.shopping_container button
+{
+    width: 15%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 180px;
+    background-color: #FFD100;
+  color: black;
+}
+.container-2 button
+{
+    width: 35%;
+}
+
+button:hover{
+    background-color: black;
+    color: #FFD100;
+  }
+  .icons button
+  {
+    width: 15%;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 50px;
+    
+      
+  }
+  .container-1 span
+  {
+      color: #FFD100;
+  }
+
+  @media only screen and (min-width: 360px) {
+    /* For mobile: */
+    .container-1
+    {
+        width: 90%;
+       
+        border: 2px solid black;
+        margin: 0 auto;
+        padding: 10px;
+        margin-top: 5%;
+    }
+    .container-1 p,h2{
+        font-size: 22px;
+        margin-top: 2%;
+    }
+    
+    .container-1 b,p{
+       position: relative;
+       float: right;
+        
+    }
+    .container-2 b{
+        position: relative;
+        float: right;
+        
+     }
+    .container-2
+    {
+        padding: 10px;
+        width: 90%;
+        border: 2px solid black;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    .container-2 h4
+    {
+        font-size: 19px;
+    }
+    .shopping_container h3
+    {
+        margin-top: 100px;
+        text-align: center;
+        
+    }
+    .shopping_container button
+    {
+        width: 43%;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 180px;
+        background-color: #FFD100;
+      color: black;
+    }
+    .container-2 button
+    {
+        width: 45%;
+    }
+
+  
+  }
+  
+  @media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .container-1
+    {
+        width: 60%;
+        
+        border: 2px solid black;
+        margin: 0 auto;
+        padding: 10px;
+        margin-top: 5%;
+    }
+    .container-1 p,h2{
+        font-size: 22px;
+        margin-top: 2%;
+    }
+    
+    .container-1 b,p{
+       position: relative;
+       float: right;
+        
+    }
+    .container-2 b{
+        position: relative;
+        float: right;
+        
+     }
+    .container-2
+    {
+        padding: 10px;
+        width: 60%;
+        border: 2px solid black;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    .container-2 h4
+    {
+        font-size: 19px;
+    }
+    .shopping_container h3
+    {
+        margin-top: 100px;
+        text-align: center;
+        
+    }
+    .shopping_container button
+    {
+        width: 33%;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 180px;
+        background-color: #FFD100;
+      color: black;
+    }
+    .container-2 button
+    {
+        width: 35%;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .container-1
+    {
+        width: 27%;
+     
+        border: 2px solid black;
+        margin: 0 auto;
+        padding: 10px;
+        margin-top: 5%;
+    }
+    .container-1 p{
+        font-size: 25px;
+        margin-top: 2%;
+    }
+    .container-1 b,p{
+       position: relative;
+       float: right;
+        
+    }
+    .container-2 b{
+        position: relative;
+        float: right;
+        
+     }
+    .container-2
+    {
+        padding: 10px;
+        width: 27%;
+        border: 2px solid black;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    .container-2 h4
+    {
+        font-size: 19px;
+    }
+    .shopping_container h3
+    {
+        margin-top: 100px;
+        text-align: center;
+        
+    }
+    .shopping_container button
+    {
+        width: 15%;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 180px;
+        background-color: #FFD100;
+      color: black;
+    }
+    .container-2 button
+    {
+        width: 35%;
+    }
+    button:hover{
+        background-color: black;
+        color: #FFD100;
+      }
+  
+  }
+  

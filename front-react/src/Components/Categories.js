@@ -1,7 +1,6 @@
 import react from 'react';
 import { Row } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"
-import './Categories.css';
 
 
 let Markets = () => {

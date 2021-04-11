@@ -28,14 +28,15 @@ router.get('/:id', async (req,res)=>{
     try {
         const Market = await market.findById(req.params.id)
         const VendorIDs = Market.vendorIds
-        const VendorInfo = []
+        let VendorInfo = []
         for(let i = 0; i < VendorIDs.length; i++){
             const Vendor = await vendor.findById(VendorIDs[i])
-            VendorInfo.push(Vendor).save()
+            console.log(Vendor)
+            VendorInfo[i] = Vendor
         }
         res.status(200).json({vendor: VendorInfo})
     }catch(err){
-        return res.status(404).json({message: "Sorry system is busy"})
+        return res.status(404).json({message: "Sorry system is busy", err})
     }
 })
 

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,12 +10,23 @@ function SignupScreen(props) {
   const [phoneno, setPhone]=useState('')
   const [email_address, setEmailAddress]=useState('')
   const [confirmPassword, setConfirmPassword]=useState('')
-  
+  const [serverResponse, setServerResponse] = useState('')
 
  
   const submitHandler = (e) => {
     e.preventDefault();
-   
+    const body = {
+      name: name,
+      email_address: email_address,
+      phoneno: phoneno,
+      password: password,
+      confirmPassword: confirmPassword
+    }
+    axios.post('http://jsonplaceholder.typicode.com/customer/signup', body).then(res => {
+      console.log(res)
+      const reply = JSON.parse(res)
+      setServerResponse(reply.message)
+    })
   };
  
 
@@ -63,12 +75,11 @@ function SignupScreen(props) {
             <button type="submit" className="button-primary">SIGNUP</button>
           </li>
           <li>Already have an account?<a href="/login" style={{color:'#FFD100'}}>Login</a> here</li>
-          
-
-
         </ul>
       </form>
-   
+      <div>
+            <p>{serverResponse}</p>
+      </div>
 
       
     </div>

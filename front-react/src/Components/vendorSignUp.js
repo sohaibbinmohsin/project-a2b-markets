@@ -7,17 +7,32 @@ function SignupScreen(props) {
   const [name, setName]=useState('')
   const [shop_name, setShopName]=useState('')
   const [shop_address, setShopAddress]=useState('')
-  const[category_name,setCategoryName]=useState('')
+  const [category_name,setCategoryName]=useState('')
   const [password, setPassword]=useState('')
   const [phoneno, setPhone]=useState('')
   const [email_address, setEmailAddress]=useState('')
   const [confirmPassword, setConfirmPassword]=useState('')
+  const [serverResponse, setServerResponse] = useState('')
   
 
  
   const submitHandler = (e) => {
     e.preventDefault();
-   
+    const body = {
+      name: name,
+      shop_name: shop_name,
+      shop_address: shop_address,
+      email_address: email_address,
+      phoneno: phoneno,
+      category_name: category_name,
+      password: password,
+      confirmPassword: confirmPassword
+    }
+    axios.post('http://jsonplaceholder.typicode.com/vendor/signup', body).then(res => {
+      // console.log(res)
+      const reply = JSON.parse(res)
+      setServerResponse(reply.message)
+    })
   };
  
 
@@ -55,7 +70,10 @@ function SignupScreen(props) {
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="  Enter your email" class="form-control" onChange={(e)=>setEmailAddress(e.target.value)}></input>
           </li>
-          
+          <li>
+            <label for="category">Category Name</label>
+            <input type="text" id="category" name="category" placeholder="  Enter category (e.g. Fast Food, Cakes and Deserts, Flower Shop, etc)" class="form-control" onChange={(e)=>setCategoryName(e.target.value)}></input>
+          </li>          
           <li>
             <label for="password">Password</label>
             <br/>
@@ -78,12 +96,11 @@ function SignupScreen(props) {
             <button type="submit" className="button-primary">SIGNUP</button>
           </li>
           <li>Already have an account?<a href="/login" style={{color:'#FFD100'}}>Login</a> here</li>
-          
-
-
         </ul>
       </form>
-   
+      <div>
+            <p>{serverResponse}</p>
+      </div>
 
       
     </div>

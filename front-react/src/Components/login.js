@@ -2,17 +2,31 @@ import React, {useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import './login_signup.css';
-
+const [token, setToken] = useState('')
+const [userID, setUserID] = useState('')
+module.exports = token
+module.exports = userID
 
 function LoginScreen(props) {
-  const [userName, setUsername]=useState('')
+  const [email_address, setEmailAddress]=useState('')
   const [password, setPassword]=useState('')
-  
-
+  const [role, setRole]=useState('')
+  const [serverResponse, setServerResponse] = useState('')
  
   const submitHandler = (e) => {
     e.preventDefault();
-   
+    const body = {
+      email_address: email_address,
+      password: password,
+      role: role
+    }
+    axios.post('http://jsonplaceholder.typicode.com/user/signin', body).then(res => {
+      // console.log(res)
+      const reply = JSON.parse(res)
+      setServerResponse(reply.message)
+      setToken(reply.token)
+      setUserID(reply._id)
+    })
   };
  
 
@@ -32,7 +46,7 @@ function LoginScreen(props) {
           <li>
             <label>Username</label>
             <br/>
-            <input type="text" name="username" class="form-control" placeholder="  Enter Username" onChange={(e)=>setUsername(e.target.value)}/>
+            <input type="email" name="email" class="form-control" placeholder="  Enter Email" onChange={(e)=>setEmailAddress(e.target.value)}/>
           </li>
           
           <li>
@@ -46,9 +60,9 @@ function LoginScreen(props) {
             <label >Login as </label>
             <br/>
             <select name="Choose option" id="Choose Option">
-            <option value="Customer">Customer</option>
-            <option value="Vendor">Vendor</option>
-            <option value="Admin">Admin</option>
+            <option value="Customer" onClick={(e)=>setRole('Customer')}>Customer</option>
+            <option value="Vendor" onClick={(e)=>setRole('Vendor')}>Vendor</option>
+            <option value="Admin" onClick={(e)=>setRole('Admin')}>Admin</option>
             
           </select>
 
@@ -61,7 +75,9 @@ function LoginScreen(props) {
 
         </ul>
       </form>
-   
+      <div>
+            <p>{serverResponse}</p>
+      </div>
 
       
     </div>

@@ -1,5 +1,6 @@
 const express = require('express')
-let market = require('../models/market.model')
+const market = require('../models/market.model')
+const vendor = require('../models/vendor.model')
 const multer = require('multer')
 
 const storage = multer.diskStorage({
@@ -24,9 +25,18 @@ router.get('/', async (req,res)=>{
 })
 
 router.get('/:id', async (req,res)=>{
-    market.findById(req.params.id)
-    .then(market => res.json(market))
-    .catch(err => res.status(400).json('Error' + err))
+    try {
+        const Market = await market.findById(req.params.id)
+        const VendorIDs = Market.vendorIds
+        const VendorInfo = []
+        for(let i = 0; i < VendorIDs.length; i++){
+            const Vendor = await vendor.findById(VendorIDs[i])
+            VendorInfo.push(Vendor).save()
+        }
+        res.status(200).json({vendor: VendorInfo})
+    }catch(err){
+        return res.status(404).json({message: "Sorry system is busy"})
+    }
 })
 
 router.post('/add', upload.single('image'), (req,res) =>{

@@ -66,37 +66,25 @@ let Markets = () => {
                 </Row>
                          
             </div>
-            <div  style={{fontFamily: 'Roboto'}, {margin: '4rem'}}>
+
+            <div  style={{fontFamily: 'Roboto'}, {margin: '4.5rem'}}>
                 <div class="text-center font-weight-normal" style={{fontSize: '2.5vw'}}>Are you a Shop Owner?</div>
                 <div class="text-center font-weight-normal" style={ {fontSize: '2.5vw'}}>Interested in expanding your Network?</div>
                 <div class="d-flex justify-content-center" style={{padding: '1.5rem'}}>
                     <button  className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>JOIN US</strong></button>
                 </div>
-                
-                <div class="d-flex justify-content-center" style={{alignItems: 'center'}, {justifyContent: 'center'}, {margin: '3rem'}, {width: '18rem'}}>
-                    <div class="ml-auto">
-                    <button className="btn btn-primary-outline-light">
-                        <img  className="card-img" src="../../images/partner" alt="loading..."></img>
-                    </button>
-                    <div>Partner with us and reach thousands of customers</div>
-                    </div>
 
-                    <div class="mr-auto">
-                    <button className="btn btn-primary-outline-light">
-                        <img  className="card-img" src="../../images/automate" alt="loading..."></img>
-                    </button>
-                    <div>Automate and organize your procedures</div>
-                    </div>
-
-                </div>
-
-                <div className="table-points" style={{width: '16rem'}}>
-                    <div>
+                <div class="d-flex justify-content-center" style={{display:'inline'}}>
+                    <div class="pull-left" style={{width:'18rem', marginRight: '6rem'}}>
                         <img src="../../images/partner" alt="loading..."></img>
                         <h6>Partner with us and reach thousands of customers</h6>
                     </div>
+                    <div class="pull-right" style={{width:'18rem'}}>
+                        <img src="../../images/partner" alt="loading..."></img>
+                        <h6>Automate and organize your procedures</h6>
+                    </div>
                 </div>
-            </div> 
+            </div>
         </div>
     )
 

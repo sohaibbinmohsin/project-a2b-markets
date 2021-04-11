@@ -2,6 +2,8 @@ import React, {useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 
 import './login_signup.css';
+import Footer from './footer.js'
+
 
 function SignupScreen(props) {
   const [name, setUsername]=useState('')

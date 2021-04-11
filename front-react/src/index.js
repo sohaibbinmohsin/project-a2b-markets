@@ -9,6 +9,8 @@ import SignUp from './Components/SignUp'
 import Partner from './Components/partner'
 import Verification from './Components/verification'
 import LOGIN from './Components/login'
+import VOUCHER from './Components/add_voucher'
+import Proceed_Order from './Components/proceed_order'
 
 ReactDOM.render(
   <Router>
@@ -19,6 +21,8 @@ ReactDOM.render(
       <Route path="/partner" component={Partner} />
       <Route path="/verification" component={Verification} />
       <Route path="/login" component={LOGIN} />
+      <Route path="/add_voucher" component={VOUCHER} />
+      <Route path="/proceed_order" component={Proceed_Order} />
     </Switch>
   </Router>,
   document.getElementById('root')

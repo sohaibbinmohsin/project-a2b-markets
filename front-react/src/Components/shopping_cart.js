@@ -21,7 +21,7 @@ const [fst,setFst] = react.useState(false) // have to set to true
 if(fst)
 {
     const data = {}
-    axios.post("http://localhost:3000/shopping_cart",data) // api call, url to be chnaged
+    axios.post("http://jsonplaceholder.typicode.com/shopping_cart",data) // api call, url to be chnaged
     .then(res => {
         setCat(res.data)// data needs to rendered in right format
         setName("")

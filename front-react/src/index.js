@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Location from './Components/Location.js'
 import reportWebVitals from './reportWebVitals';
@@ -11,11 +11,13 @@ import Verification from './Components/verification'
 import LOGIN from './Components/login'
 import VOUCHER from './Components/add_voucher'
 import Proceed_Order from './Components/proceed_order'
+import Shop from './Components/Shop.js'
+import Results from './Components/Results.js'
 
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path="/" exact component={App} />
+      {/* <Route path="/" exact component={App} /> */}
       <Route path="/location" component={Location} />
       <Route path="/SignUp" component={SignUp} />
       <Route path="/partner" component={Partner} />
@@ -23,6 +25,8 @@ ReactDOM.render(
       <Route path="/login" component={LOGIN} />
       <Route path="/add_voucher" component={VOUCHER} />
       <Route path="/proceed_order" component={Proceed_Order} />
+      <Route path="/shop" component={Shop} />
+      <Route path="/results" component={Results} />
     </Switch>
   </Router>,
   document.getElementById('root')

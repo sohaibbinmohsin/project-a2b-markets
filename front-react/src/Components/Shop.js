@@ -14,6 +14,7 @@ let searchResults = (props) =>{
     const [cat,setCat] = react.useState(arr)
     const [name,setName] = react.useState("Burger Lab")
     const [fst,setFst] = react.useState(false) // have to set to true
+    const [cvr,setCvr] = react.useState('./products/food.png')
 
     if(fst)
     {
@@ -42,8 +43,8 @@ let searchResults = (props) =>{
     return(
         <div style={{fontFamily: 'Roboto'}}>
             <Navbar />
-            <div>
-                <img src='./products/food.png' className="img-fluid mt-n3 w-100"/>
+            <div className="mt-n3" style={{height: "450px",width:"100%",overflow:"hidden"}}>
+                <img src={cvr} className="img-fluid w-100"/>
             </div>
             <div className="d-flex float-left ml-4 mt-4">
                 <div className="text-uppercase h2 font-weight-bold">{name}
@@ -64,7 +65,7 @@ let searchResults = (props) =>{
                 })
             }
             </div>
-            <div className="d-inline ml-2 mr-2 w-100">
+            <div className="d-inline ml-2 mr-2 w-100" style={{paddingBottom:"160px"}}>
             {
                 Object.keys(cat).map((arr1,ind1)=>{
                     return(
@@ -96,7 +97,7 @@ let searchResults = (props) =>{
                 })
             }
             </div>
-            <div className="navbar navbar-default navbar-static-bottom navbar-fixed-bottom">
+            <div className="footer">
                 <Footer />
             </div>
         </div>

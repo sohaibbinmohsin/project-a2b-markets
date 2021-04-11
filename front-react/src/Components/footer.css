@@ -1,115 +1,66 @@
 * {
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Roboto';
 }
 .outer-container
 {
     
     color: black;
+    height: 400px;
     background-color: #FFD100;
-    
+  
     position: relative;
     bottom: 0;
-    padding-bottom: 0px;
     width: 100%;
 }
 .fa {
-    padding:20px;
-    font-size: 120%;
-    width: 6%;
-    text-align: center;
-    text-decoration: none;
-    /* margin: 5px 2px; */
-  }
+  padding:20px;
+}
 li{
-    list-style-type: none;
+  list-style-type: none;
 }
 .logo
 {
-    padding: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    
+  padding-top: 10px;
+
+  float: left;
+
+  
 
 }
 .logo img{
- 
-    margin-left: 25px;
-    height: 70px;
-    
+
+  height: 70px;
+  
 }
+
 .social-icons
 {
-   
-   position: relative;
-   top:100px;
-}
-.outer-container a
-{
-    font-size: 30px;    
-    color: black;
-    border-right-color:white;
-    margin-bottom: 0px;
-    border-radius: 20px;
  
+ position: relative;
+ top:100px;
 
-   
+ width: 100%;
+}
+.social-icons a
+{
+  font-size: 30px;    
+  color: black;
+
+
 }
 .fa:hover {
-    color: white;
-    border-radius: 10px;
-    border: 2px solid black;
-    box-shadow: 1px 1px  white;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 1px 1px  white;
 }
 .termsconditions
 {
-    text-align: center;
-    font-size: 18px;
-}
-@media only screen and (min-width: 360px) {
-  /* For mobile: */
  
-
-.social-icons a
-{
-  width: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
 }
-.fa {
-  padding:20px;
-  font-size: 120%;
-  width: 6%;
- 
-  text-decoration: none;
-}
-}
-@media only screen and (min-width: 600px) {
-  
-  .social-icons a
-  {
-    width: 12%;
-  }
-  .fa {
-    padding:20px;
-    font-size: 120%;
-    width: 6%;
-    text-align: center;
-    text-decoration: none;
-    /* margin: 5px 2px; */
-  }
-  }
-  @media only screen and (min-width: 768px) {
-    
-  .social-icons a
-  {
-    width: 6%;
-  }
-  .fa {
-    padding:20px;
-    font-size: 120%;
-    width: 6%;
-    text-align: center;
-    text-decoration: none;
-    /* margin: 5px 2px; */
-  }
-  }
- 

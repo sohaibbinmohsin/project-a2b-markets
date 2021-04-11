@@ -1,0 +1,59 @@
+.MarketsFilter {
+    display: flex;
+    padding: 20px;
+    align-items: flex-end;
+    /* position: fixed; */
+}
+
+.Markets {
+    flex: 70%;
+    font-size: 45px;
+    font-weight: bold;
+    margin-left: 3.5%;
+}
+
+/* .Filter { */
+    /* width: 350px;
+    height: 40px;
+    padding: 20px;
+    border: 1px;
+    border-style: solid;
+    border-color: #FFD100;
+    border-radius: 7px; */
+    /* margin-right: 20px; */
+    /* flex-direction: row; */
+    /* margin-top: 10px; */
+    /* position: relative; */
+    /* justify-content: center;
+    align-items: flex-end;
+    flex-direction: initial;
+    justify-content: right;
+    font-family: 'Roboto', sans-serif;
+} */
+
+/* .searchIcon {
+    align-items: center;
+} */
+
+.searchFilter {
+    border-style: solid;
+    border-color: #FFD100;
+    float: right;
+    width: 350px;
+    height: 40px;
+    border-radius: 7px;
+    margin-right: 20px;
+    align-items: left;
+    justify-content: flex-end;
+} 
+
+.filterIcon {
+    height: 40px;
+    width: 50px;
+    border-radius: 7px;
+    border-style: hidden;
+    background-color: #FFD100;
+    align-content: center;
+    justify-content: center;
+    margin-right: 3.5%;
+}

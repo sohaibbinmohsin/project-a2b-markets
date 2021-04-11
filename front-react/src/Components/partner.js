@@ -1,5 +1,7 @@
 import React, {useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
+import Footer from './footer.js'
+import './footer.css'
 
 
 import './login_signup.css';
@@ -101,9 +103,10 @@ that I have read and understood Deliveroo Privacy Policy. </p>
               </p>
               
               </div>
+          
               
           </div>
-          
+          <Footer/>
           
       </div>
      

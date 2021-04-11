@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './login_signup.css';
 import Footer from './footer.js'
+import './footer.css'
 
 
 function SignupScreen(props) {

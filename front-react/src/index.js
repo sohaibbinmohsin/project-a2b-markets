@@ -8,11 +8,13 @@ import reportWebVitals from './reportWebVitals';
 import SignUp from './Components/SignUp'
 import Partner from './Components/partner'
 import Verification from './Components/verification'
-import LOGIN from './Components/login'
-import VOUCHER from './Components/add_voucher'
+import Login from './Components/login'
+import Voucher from './Components/add_voucher'
 import Proceed_Order from './Components/proceed_order'
 import Shop from './Components/Shop.js'
 import Results from './Components/Results.js'
+import Reset_password from './Components/reset_password'
+import Verify_Code from './Components/code_verify'
 
 ReactDOM.render(
   <Router>
@@ -22,11 +24,13 @@ ReactDOM.render(
       <Route path="/SignUp" component={SignUp} />
       <Route path="/partner" component={Partner} />
       <Route path="/verification" component={Verification} />
-      <Route path="/login" component={LOGIN} />
-      <Route path="/add_voucher" component={VOUCHER} />
+      <Route path="/login" component={Login} />
+      <Route path="/add_voucher" component={Voucher} />
       <Route path="/proceed_order" component={Proceed_Order} />
       <Route path="/shop" component={Shop} />
       <Route path="/results" component={Results} />
+      <Route path="/Reset_password" component={Reset_password} />
+      <Route path="/code_verify" component={Verify_Code} />
     </Switch>
   </Router>,
   document.getElementById('root')

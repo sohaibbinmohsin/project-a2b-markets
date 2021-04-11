@@ -75,6 +75,9 @@ function SignupScreen(props) {
       
     </div>
     </div>
+<div className="navbar navbar-default navbar-static-bottom navbar-fixed-bottom">
+                <Footer />
+            </div>
     
     </body>
     

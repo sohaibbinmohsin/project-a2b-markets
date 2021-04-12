@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"no command for testing\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "client": "cd front-react && npm start",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-react && npm run build --prefix front-react"
   },
   "keywords": [],
   "author": "sohaibbinmohsin",

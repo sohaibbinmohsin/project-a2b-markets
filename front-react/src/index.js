@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
+import App from './App';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Location from './Components/Location.js'
 import reportWebVitals from './reportWebVitals';
@@ -19,7 +19,7 @@ import Verify_Code from './Components/code_verify'
 ReactDOM.render(
   <Router>
     <Switch>
-      {/* <Route path="/" exact component={App} /> */}
+      <Route path="/" exact component={App} />
       <Route path="/location" component={Location} />
       <Route path="/SignUp" component={SignUp} />
       <Route path="/partner" component={Partner} />

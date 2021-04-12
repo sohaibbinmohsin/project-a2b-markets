@@ -1,17 +1,15 @@
 import React, {useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios'
 import './login_signup.css';
-const [token, setToken] = useState('')
-const [userID, setUserID] = useState('')
-module.exports = token
-module.exports = userID
 
 function LoginScreen(props) {
   const [email_address, setEmailAddress]=useState('')
   const [password, setPassword]=useState('')
   const [role, setRole]=useState('')
   const [serverResponse, setServerResponse] = useState('')
+  const [token, setToken] = useState('')
+  const [userID, setUserID] = useState('')
  
   const submitHandler = (e) => {
     e.preventDefault();

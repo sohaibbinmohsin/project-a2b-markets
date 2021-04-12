@@ -3,9 +3,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import './carouselContainer.css'
-import img1 from '../../images/slideShow1.png';
-import img2 from '../../images/slideShow2.jpg';
-import img3 from '../../images/slideShow3.jpg';
+
 
 const CarouselContainer = () => {
     return (
@@ -13,7 +11,7 @@ const CarouselContainer = () => {
   <Carousel.Item interval={2000}>
     <img 
       className="d-block w-100"
-      src={img1}
+      src='/img/slideShow1.png'
       height = "300px"
       width = "500px"
       alt="Deal 1"
@@ -24,7 +22,7 @@ const CarouselContainer = () => {
   <Carousel.Item interval={2000}>
     <img
       className="d-block w-100"
-      src={img2}
+      src='/img/slideShow2.jpg'
       height = "300px"
       width = "500px"
     //   margin-right = "100px"
@@ -37,7 +35,7 @@ const CarouselContainer = () => {
   <Carousel.Item interval={2000}>
     <img
       className="d-block w-100"
-      src={img3}
+      src='/img/slideShow3.jpg'
       height = "300px"
       width = "500px"
       alt="Deal 3"

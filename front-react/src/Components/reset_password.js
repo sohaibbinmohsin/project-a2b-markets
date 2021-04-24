@@ -20,7 +20,7 @@ function LoginScreen(props) {
 
   return (
     <body>
-      <header><img src="./img/A2B.png" class="img-fluid" alt="Responsive image" style={{height:'60px'}}></img></header>
+      <header><a href ="/"><img src="./img/A2B.png" class="img-fluid" alt="Responsive image" style={{height:'60px'}}></img></a></header>
        <div className="outer" style={{marginBottom:'400px'}}>
       
        <div className="image-holder"><img src="./img/login.png" class="img-fluid" alt="Responsive image"></img></div>

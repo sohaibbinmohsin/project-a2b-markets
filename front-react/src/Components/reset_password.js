@@ -1,32 +1,27 @@
 import React, {useEffect,useState} from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
-import {forgot_password} from '../actions/auth'
+import { Link } from 'react-router-dom';
 
 import './login_signup.css';
+import Footer from './footer.js'
 
 
 function LoginScreen(props) {
   
+  const [password, setPassword]=useState('')
   const [email_address, setEmailAddress]=useState('')
-  const [role, setRole] = useState('')
-  const dispatch = useDispatch()
-  const history = useHistory()
-   
+  
+
+ 
   const submitHandler = (e) => {
     e.preventDefault();
-    const body = {
-      email_address: email_address,
-      role: role
-    }
-    dispatch(forgot_password(body, history))
+   
   };
  
 
   return (
     <body>
       <header><img src="./img/A2B.png" class="img-fluid" alt="Responsive image" style={{height:'60px'}}></img></header>
-       <div className="outer">
+       <div className="outer" style={{marginBottom:'400px'}}>
       
        <div className="image-holder"><img src="./img/login.png" class="img-fluid" alt="Responsive image"></img></div>
       
@@ -45,9 +40,9 @@ function LoginScreen(props) {
             <label >Login as </label>
             <br/>
             <select name="Choose option" id="Choose Option">
-            <option value="Customer" onClick={(e)=>setRole('Customer')}>Customer</option>
-            <option value="Vendor" onClick={(e)=>setRole('Vendor')}>Vendor</option>
-            <option value="Admin" onClick={(e)=>setRole('Admin')}>Admin</option>
+            <option value="Customer">Customer</option>
+            <option value="Vendor">Vendor</option>
+            <option value="Admin">Admin</option>
             
           </select>
 
@@ -65,6 +60,9 @@ function LoginScreen(props) {
       
     </div>
     </div>
+    <div class="position-relative">
+                <Footer />
+            </div>
     
     </body>
    

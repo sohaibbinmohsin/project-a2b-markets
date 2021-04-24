@@ -32,7 +32,7 @@ function SignupScreen(props) {
 
   return (
     <body>
-      <header><img src="./img/A2B.png" class="img-fluid" alt="Responsive image" style={{height:'60px'}}></img></header>
+       <header><a href ="/"><img src="./img/A2B.png" class="img-fluid" alt="Responsive image" style={{height:'60px'}}></img></a></header>
        <div className="outer">
       
        <div className="image-holder"><img src="https://miro.medium.com/max/1000/0*RHHxKod5FoRBI8Fk.png" class="img-fluid" alt="Responsive image"></img></div>

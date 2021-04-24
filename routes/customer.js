@@ -7,6 +7,7 @@ let jwt = require('jsonwebtoken')
 let auth = require('../middleware/auth')
 let customer =  require('../models/customer.model') 
 let shoppingCart = require('../models/shoppingcart.model')
+let vendor = require('../models/vendor.model')
 
 const router = express.Router()
 
@@ -19,6 +20,8 @@ router.get('/', async (req,res)=>{
 
 router.post('/signup', async (req,res) =>{
     const{name, email_address, phoneno, password, confirmPassword} = req.body
+        console.log(req.body)
+    try{
         const existingCustomer =  await customer.findOne({email_address})
         if(existingCustomer && existingCustomer.isVerified == true){
             return res.status(404).json({message: "Email already exists"})
@@ -46,22 +49,29 @@ router.post('/signup', async (req,res) =>{
             from: 'dummyA2B@gmail.com',
             to: newCustomer.email_address,
             subject: 'A2B Markets - Verify email',
-            text: `Thank you for registering on our website. Please click on this link to verify your account. http://${req.headers.host}/customer/verify-email?token=${newCustomer.emailToken}`
+            text: `Thank you for registering on our website. Please copy and paste this code to verify your account. ${newCustomer.emailToken}`
         };
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
                 console.log(error);
             } else {
                 res.status(200).json({message: "Thank you for registering. Please check your email to verify your account."})
+                console.log("MESSAGE SENT")
             }
           });
+        }catch(err){
+            return res.status(404).json({message: "Something went wrong"})
+        }
 
 
 })
 
-router.get('/verify-email', async(req,res)=>{
+router.post('/verify-email', async(req,res)=>{
     try{
-        const Customer = await customer.findOne({emailToken: req.query.token})
+        console.log("NEEDTOVERIFY")
+        const email_token = req.body.token
+        console.log(email_token)
+        const Customer = await customer.findOne({emailToken: email_token})
         if(!Customer){
             res.status(404).json({message: "Invalid token"})
         }
@@ -184,9 +194,42 @@ router.post('/addToCart', auth, async(req,res)=>{
    
     }
     const productID = req.body.product_id
-    const productQuantity = 1
+    const productName = req.body.product_name
+    const vendorID = req.body.vendor_id
     const productPrice = req.body.product_price
+    const productQuantity = 1
+
+    const vendor_product = await vendor.findOne({_id: vendorID})
+    console.log(vendor_product.shop_name)
+
+    if(!vendor_product){
+        return res.status(400).json({message: "Could not find the product"})
+    }
+
+    const vendorName = vendor_product.shop_name
+    const vendorDeliveryFee = vendor_product.delivery_charges
+
     const customer_shoppingCart = await shoppingCart.findOne({_id: req.userID})
+    if(customer_shoppingCart.vendor_id !== vendorID){ 
+        shoppingCart.findOneAndUpdate({_id: currentCustomer._id},{
+            products : {
+                "product_id": productID,
+                "product_name": productName,
+                "product_quantity": productQuantity,
+                "product_price": productPrice
+            },
+            total_price: productPrice,
+            vendor_name: vendorName,
+            vendor_id: vendorID, 
+            delivery_charges:vendorDeliveryFee
+        },(err, updatedCart) =>{
+            if(err){
+                return res.status(404).json({message : "Couldnot add item to cart."})
+            }
+            return res.status(200).json({message : "Item added to cart"})
+        })
+    }
+    else{
     let exists = false
     customer_shoppingCart.products.forEach((cartItem)=>{
         if(cartItem.product_id === productID){
@@ -200,10 +243,12 @@ router.post('/addToCart', auth, async(req,res)=>{
             })
         }
     })
+
     if(!exists){
-        shoppingCart.findOneAndUpdate({_id: currentCustomer._id},{$push: {
+        shoppingCart.findOneAndUpdate({_id: currentCustomer._id},{vendor_name: vendorName, vendor_id: vendorID, delivery_charges:vendorDeliveryFee, $push: {
             products:{
                 "product_id": productID,
+                "product_name": productName,
                 "product_quantity": productQuantity,
                 "product_price": productPrice
             }
@@ -214,6 +259,7 @@ router.post('/addToCart', auth, async(req,res)=>{
         } 
     )
     
-}})
+}}
+})
 
 module.exports = router

@@ -4,7 +4,7 @@
   box-sizing: border-box;
    font-family: 'Roboto';
 }
-body{ height:220vh; margin:0; }
+body{ height:100%; margin:0; }
 body{ 
   display:flex; 
   flex-direction:column; 
@@ -117,7 +117,11 @@ button:hover{
   right: -16px;
   font-size: 18px;
 } */
-
+.outer
+{
+  
+  margin-bottom: 100px;
+}
 .image-holder
 {
   width: 100vw;

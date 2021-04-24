@@ -41,7 +41,7 @@ let Markets = () => {
 
                             <div className="card m-auto border-0" style={{width: "20rem", padding: '2rem', cursor:'pointer'}} onClick={()=>marketClick(ind,ind)}>
                                     <img className="card-img" src={"/markets/"+iarr.image} alt="loading..."></img>
-                                    <div style={{backgroundColor: "#FFD100"}}><button className="btn btn-primary-outline-light" ><strong>{iarr.name}</strong></button></div>
+                                    <div style={{backgroundColor: "#FFD100"}}><a className="btn btn-primary-outline-light" ><strong>{iarr.name}</strong></a></div>
                                     <div className="pt-1">{iarr.description}</div>
                             </div>
 

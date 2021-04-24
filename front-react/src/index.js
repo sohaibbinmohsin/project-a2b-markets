@@ -15,8 +15,16 @@ import Shop from './Components/Shop.js'
 import Results from './Components/Results.js'
 import Reset_password from './Components/reset_password'
 import Verify_Code from './Components/code_verify'
+import ShoppingCart from './Components/shopping_cart'
+import signUpVerification from './Components/signUp-code'
+import thunk from 'redux-thunk'
+import {Provider} from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+import reducers from './reducers'
 
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
 ReactDOM.render(
+  <Provider store = {store}>
   <Router>
     <Switch>
       <Route path="/" exact component={App} />
@@ -27,12 +35,15 @@ ReactDOM.render(
       <Route path="/login" component={Login} />
       <Route path="/add_voucher" component={Voucher} />
       <Route path="/proceed_order" component={Proceed_Order} />
+      <Route path="/shopping_cart" component={ShoppingCart} />
       <Route path="/shop" component={Shop} />
       <Route path="/results" component={Results} />
       <Route path="/Reset_password" component={Reset_password} />
       <Route path="/code_verify" component={Verify_Code} />
+      <Route path="/signUp_verification" component={signUpVerification} />
     </Switch>
-  </Router>,
+  </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
@@ -40,3 +51,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

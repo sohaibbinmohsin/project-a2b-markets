@@ -1,7 +1,11 @@
 import React, {useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
 import './login_signup.css';
+import Footer from './footer.js'
+import './footer.css'
+import {signupVendor} from '../actions/auth'
 
 function SignupScreen(props) {
   const [name, setName]=useState('')
@@ -13,7 +17,8 @@ function SignupScreen(props) {
   const [email_address, setEmailAddress]=useState('')
   const [confirmPassword, setConfirmPassword]=useState('')
   const [serverResponse, setServerResponse] = useState('')
-  
+  const dispatch = useDispatch()
+  const history = useHistory()
 
  
   const submitHandler = (e) => {
@@ -28,11 +33,7 @@ function SignupScreen(props) {
       password: password,
       confirmPassword: confirmPassword
     }
-    axios.post('http://jsonplaceholder.typicode.com/vendor/signup', body).then(res => {
-      // console.log(res)
-      const reply = JSON.parse(res)
-      setServerResponse(reply.message)
-    })
+    dispatch(signupVendor(body,history))
   };
  
 
@@ -104,8 +105,6 @@ function SignupScreen(props) {
 
       
     </div>
-    </div>
-    
     </body>
     
    

@@ -17,6 +17,8 @@ import Reset_password from './Components/reset_password'
 import Verify_Code from './Components/code_verify'
 import ShoppingCart from './Components/shopping_cart'
 import signUpVerification from './Components/signUp-code'
+import vendorSignUpVerification from './Components/signUp-code-vendor'
+import vendor_shop from './Components/vendorShop'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -41,6 +43,8 @@ ReactDOM.render(
       <Route path="/Reset_password" component={Reset_password} />
       <Route path="/code_verify" component={Verify_Code} />
       <Route path="/signUp_verification" component={signUpVerification} />
+      <Route path="/Vendor_signUp_verification" component={vendorSignUpVerification} />
+      <Route path="/Vendor_Shop" component={vendor_shop} />
     </Switch>
   </Router>
   </Provider>,

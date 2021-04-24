@@ -31,7 +31,7 @@ function LoginScreen(props) {
     
         <ul className="form-container">
           <li>WELCOME</li>
-          <li>
+          <li><Route path="/code_verify" component={Verify_Code} />
             <label for="vode">Verification Code</label>
             <br/>
             <input type="code" id="code" name="code" placeholder="  Enter verification code" class="form-control" onChange={(e)=>setCode(e.target.value)}/>

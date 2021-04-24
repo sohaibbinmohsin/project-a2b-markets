@@ -1,19 +1,25 @@
 import React, {useEffect,useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
+import {forgot_password} from '../actions/auth'
 
 import './login_signup.css';
 
 
 function LoginScreen(props) {
   
-  const [password, setPassword]=useState('')
   const [email_address, setEmailAddress]=useState('')
-  
-
- 
+  const [role, setRole] = useState('')
+  const dispatch = useDispatch()
+  const history = useHistory()
+   
   const submitHandler = (e) => {
     e.preventDefault();
-   
+    const body = {
+      email_address: email_address,
+      role: role
+    }
+    dispatch(forgot_password(body, history))
   };
  
 
@@ -39,9 +45,9 @@ function LoginScreen(props) {
             <label >Login as </label>
             <br/>
             <select name="Choose option" id="Choose Option">
-            <option value="Customer">Customer</option>
-            <option value="Vendor">Vendor</option>
-            <option value="Admin">Admin</option>
+            <option value="Customer" onClick={(e)=>setRole('Customer')}>Customer</option>
+            <option value="Vendor" onClick={(e)=>setRole('Vendor')}>Vendor</option>
+            <option value="Admin" onClick={(e)=>setRole('Admin')}>Admin</option>
             
           </select>
 

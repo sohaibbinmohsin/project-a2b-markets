@@ -4,7 +4,7 @@ import axios from 'axios'
 import './login_signup.css';
 import { useDispatch} from 'react-redux';
 import {signin} from '../actions/auth'
-
+import Footer from './footer.js'
 function LoginScreen(props) {
   const [email_address, setEmailAddress]=useState('')
   const [password, setPassword]=useState('')
@@ -77,6 +77,9 @@ function LoginScreen(props) {
       
     </div>
     </div>
+    <div class="position-relative">
+                <Footer />
+            </div>
     
     </body>
    

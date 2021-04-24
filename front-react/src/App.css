@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+  .searchBox {
+    display: flex;
+    padding: 30px;
+    border-radius: 20px;
+    justify-content: left;
+    flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+}
+
+.textBox {
+    border-style: solid;
+    border-color: #FFD100;
+    float: right;
+    width: 400px;
+    height: 40px;
+    border-radius: 7px;
+    margin-left: 3%;
+    text-align: left;
+    align-items: center;
+}
+
+.searchBtn {
+    float: left;
+    border-style: hidden;
+    border-radius: 30px;
+    border-left: none;
+    background: #FFD100;
+    justify-content: center;
+    margin-left: 10px;
+    padding: 5px;
+    width: 200px;
+    height: 40px;
+    font-size: inherit;
+    font-weight: bold;
+}

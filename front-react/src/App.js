@@ -26,9 +26,8 @@ function App() {
       <Navbaar />
       {/* <GlobalStyle /> */}
       <div className="searchBox">
-        {/* <input className="textBox" type="text" placeholder="Enter your address"></input> */}
-          {/* <i className="locationIcon" class="fa fa-location" ></i>  */}
-        {/* <button className="searchBtn" >FIND SHOPS NEAR YOU</button> */}
+        <input className="textBox" type="text" placeholder="Enter your address"></input>
+        <button className="searchBtn" >FIND SHOPS NEAR YOU</button>
       </div>
       <CarouselContainer />
       <Markets />

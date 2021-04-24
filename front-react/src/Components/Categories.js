@@ -1,23 +1,24 @@
-import react from 'react';
+import react, { useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"
 // import './Categories.css';
 import axios from 'axios'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'
+import { getCategories } from '../actions/markets';
+import { set } from 'mongoose';
 
 
 let Markets = () => {
-
+    const categories = useSelector((state) => state.categories)
     const arr = [['k.png','Fast Food Corner','Pizzas, Burgers, Pasta, etc.'],['k-1.png','Pharmacies','Medicines, Quipment, etc.'],['k-2.png','Fruits and Vegetables','Banana, Apple, Potato, Ginger, etc.'],['k-3.png','Cosmetics and Beauty','Makeup Kits, Ascessories, etc.'],['k-4.png','Pet Shops','Pet food, ascessories, etc.'],['k-5.png','Flower Shops','Bouquets, Lillies, Roses, etc.'],['k-6.png','Dry Fruits and Nuts','Peanuts, Cashew, Almonds, etc.'],['k-7.png','Fresh Meat','Mutton, Chicken, Beef, etc'],['k-8.png','Fish & Sea Food','Fish, Prawns, etc.'],['k-9.png','Bakery & Dairy Products','Milk, Butter, Bread, Eggs, Cereals, Oats, etc.']]
-    const [opt, setOpt] = react.useState(arr)
     const [serverResponse, setServerResponse] = react.useState('')
 
-    axios.get('http://jsonplaceholder.typicode.com/markets').then(res => {
-      // console.log(res)
-      const reply = JSON.parse(res)
-      setServerResponse(reply)
-    })
+
 
     const marketClick = (id) => {
+        console.log(categories[id])
+        
         axios.get(`http://jsonplaceholder.typicode.com/markets/${id}`).then(res => {
         // console.log(res)
         const reply = JSON.parse(res)
@@ -32,16 +33,16 @@ let Markets = () => {
             <div style={{fontFamily: 'Roboto'}, {marginTop: '3rem', marginLeft: '8rem'}}>
             {/* <div className="mt-5 mr-5 ml-5" > */}
             <Row style={{gridRowGap: '2rem'}}>
-                {
-                    opt.map((iarr, ind)=>{
+                {  
+                    categories.map((iarr, ind)=>{
                         return(
                             <div className="d-flex mt-4">
                             {
 
                             <div className="card m-auto border-0" style={{width: "20rem", padding: '2rem', cursor:'pointer'}} onClick={()=>marketClick(ind,ind)}>
-                                    <img className="card-img" src={"/markets/"+arr[ind][0]} alt="loading..."></img>
-                                    <button className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>{arr[ind][1]}</strong></button>
-                                    <div className="pt-1">{arr[ind][2]}</div>
+                                    <img className="card-img" src={"/markets/"+iarr.image} alt="loading..."></img>
+                                    <button className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>{iarr.name}</strong></button>
+                                    <div className="pt-1">{iarr.description}</div>
                             </div>
 
                             }

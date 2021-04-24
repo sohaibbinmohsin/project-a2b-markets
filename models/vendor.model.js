@@ -15,7 +15,7 @@ const vendorSchema = new Schema({
     isVerified: {type: Boolean},
     emailToken: {type: String},
     delivery_time: {type: String},
-    delivery_charges: {type: String},
+    delivery_charges: {type: String, default: "free"},
     timing: {type: String},
     products: {
         type: Array},

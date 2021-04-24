@@ -1,16 +1,19 @@
 import React, {useEffect,useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios'
 import './login_signup.css';
+import { useDispatch} from 'react-redux';
+import {signin} from '../actions/auth'
 
 function LoginScreen(props) {
   const [email_address, setEmailAddress]=useState('')
   const [password, setPassword]=useState('')
-  const [role, setRole]=useState('')
+  const [role, setRole]=useState('Customer')
   const [serverResponse, setServerResponse] = useState('')
   const [token, setToken] = useState('')
   const [userID, setUserID] = useState('')
- 
+  const dispatch = useDispatch()
+  const history = useHistory()
   const submitHandler = (e) => {
     e.preventDefault();
     const body = {
@@ -18,19 +21,13 @@ function LoginScreen(props) {
       password: password,
       role: role
     }
-    axios.post('http://jsonplaceholder.typicode.com/user/signin', body).then(res => {
-      // console.log(res)
-      const reply = JSON.parse(res)
-      setServerResponse(reply.message)
-      setToken(reply.token)
-      setUserID(reply._id)
-    })
-  };
+    dispatch(signin(body, history))
+  }
  
 
   return (
     <body>
-      <header><img src="./img/A2B.png" class="img-fluid" alt="Responsive image" style={{height:'60px'}}></img></header>
+      <header><a href ="/"><img src="./img/A2B.png" class="img-fluid" alt="Responsive image" style={{height:'60px'}}></img></a></header>
        <div className="outer">
       
        <div className="image-holder"><img src="./img/login.png" class="img-fluid" alt="Responsive image"></img></div>
@@ -86,3 +83,4 @@ function LoginScreen(props) {
   );
 }
 export default LoginScreen;
+

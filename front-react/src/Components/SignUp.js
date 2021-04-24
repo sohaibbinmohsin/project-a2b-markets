@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, {useEffect,useState} from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
 import './login_signup.css';
 import Footer from './footer.js'
 import './footer.css'
-
+import {signup} from '../actions/auth'
 
 function SignupScreen(props) {
   const [name, setUsername]=useState('')
@@ -14,7 +14,8 @@ function SignupScreen(props) {
   const [email_address, setEmailAddress]=useState('')
   const [confirmPassword, setConfirmPassword]=useState('')
   const [serverResponse, setServerResponse] = useState('')
-
+  const dispatch = useDispatch()
+  const history = useHistory()
  
   const submitHandler = (e) => {
     e.preventDefault();
@@ -25,11 +26,7 @@ function SignupScreen(props) {
       password: password,
       confirmPassword: confirmPassword
     }
-    axios.post('http://jsonplaceholder.typicode.com/customer/signup', body).then(res => {
-      console.log(res)
-      const reply = JSON.parse(res)
-      setServerResponse(reply.message)
-    })
+    dispatch(signup(body,history))
   };
  
 
@@ -47,9 +44,9 @@ function SignupScreen(props) {
         <ul className="form-container">
           <li>WELCOME</li>
           <li>
-            <label>Username</label>
+            <label>Name</label>
             <br/>
-            <input type="text" name="username" placeholder="  Enter Username" class="form-control" onChange={(e)=>setUsername(e.target.value)}/>
+            <input type="text" name="username" placeholder="  Enter your name" class="form-control" onChange={(e)=>setUsername(e.target.value)}/>
           </li>
           <li>
             <label for="email">Email</label>

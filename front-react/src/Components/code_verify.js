@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link,Route } from 'react-router-dom';
+import Verify_Code from './code_verify'
 import './login_signup.css';
 
 

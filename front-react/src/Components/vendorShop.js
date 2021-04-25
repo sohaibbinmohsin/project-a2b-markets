@@ -1,10 +1,7 @@
 import react from 'react';
 import { Row } from 'react-bootstrap';
-import Box from '@material-ui/core/Box';
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
-import img from '../images/burgerLab.png'
-import temp from '../images/deal3.png'
 import { Redirect } from 'react-router';
 
 let Shops = () => {
@@ -43,7 +40,7 @@ let Shops = () => {
     return (
         <div style={{fontFamily: 'Roboto'}}>
             <div >
-                <img src={img} className = 'img-fluid w-100' />
+                <img src="/uploads/2021-04-11T12_56_20.080Zpet shop.png" className = 'img-fluid w-100' />
             </div>
             <div className="mt-5 mr-5 ml-5" >
                 <div className="d-flex">
@@ -77,7 +74,7 @@ let Shops = () => {
                                             return(
                                                 <div class='deals' className="card m-auto border-0" style={{width: "16rem", border:'groove', padding: '2rem',  cursor:"pointer"}} onClick={()=>shopClick(ind,ind)}>
                                                     {/* <img className="card-img-top" src={"/shops/"+arr[ind][3]} alt="loading.." /> */}
-                                                    <img className="card-img-top" src={temp} alt="loading.." />
+                                                    <img className="card-img-top" src="/images/deal3.png" alt="loading.." />
                                                     <div className="pt-3" style={{marginTop: "-1rem"}}> <strong>{arr[ind][ind][0]}</strong> </div>
                                                     <div style={{marginTop: "-0.25rem"}}>{arr[ind][ind][1]}</div>
                                                     <div style={{marginTop: "-0.25rem"}}>{arr[ind][ind][2]}</div>

@@ -6,9 +6,9 @@ import Navbar from './Navbar.js'
 
 let searchResults = (props) =>{
     const arr = {
-        "Most Bought" : [[["kkk-1.png","Burgur",444,"tasty "],["k-1.png","Burgur",484,"tasty "],["kkk-3.png","Burgur",74,"tasty "]]],
-        "Deals" : [[["kkk-1.png","Burgur",449,"tasty "],["kkk-1.png","Burgur",44,"tasty "],["kkk-1.png","Burgur",444,"tasty "]]],
-        "Burgurs" : [[["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "]],[["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "]]]
+        "Most Bought" : [["kkk-1.png","Burgur",444,"tasty "],["k-1.png","Burgur",484,"tasty "],["kkk-3.png","Burgur",74,"tasty "]],
+        "Deals" : [["kkk-1.png","Burgur",449,"tasty "],["kkk-1.png","Burgur",44,"tasty "],["kkk-1.png","Burgur",444,"tasty "]],
+        "Burgurs" : [["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "]]
     }
 
     const [cat,setCat] = react.useState(arr)
@@ -41,7 +41,7 @@ let searchResults = (props) =>{
     }
 
     return(
-        <div style={{fontFamily: 'Roboto'}}>
+        <div className="container-fluid" style={{fontFamily: 'Roboto'}}>
             <Navbar />
             <div className="mt-n3" style={{height: "450px",width:"100%",overflow:"hidden"}}>
                 <img src={cvr} className="img-fluid w-100"/>
@@ -71,27 +71,21 @@ let searchResults = (props) =>{
                     return(
                         <div>
                             <div className="h4 text-left ml-5 font-weight-bold mt-3">{arr1}</div>
+                            <div className="row border shadow mt-3 ml-3 mr-3" >
                         {
-                            cat[arr1].map((iarr,iind)=>{
+                            cat[arr1].map((jarr,iind)=>{
                                 return(
-                                    <div className="d-inline-flex p-auto  border shadow mt-3 ml-3 mr-3" >
-                                    {
-                                        iarr.map((jarr,jind)=>{
-                                            return(
-                                                <div className="card mt-3 mb-3 ml-5 mr-5 border-0" style={{width: "270px",cursor:"pointer"}} onClick={()=>shopClick(ind1,iind,jind)}>
-                                                    <div style={{position:"absolute",zIndex:"30",color:"#FFD100"}}onClick={()=>plusClicked(arr1,iind,jind)}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/></svg></div>
-                                                    <img className="card-img-top" src={"/products/"+jarr[0]} alt="loading.." />
-                                                    <div class="text-left font-weight-bold">{jarr[1]}</div>
-                                                    <div class="text-left font-weight-normal">{"PKR " + jarr[2]}</div>
-                                                    <div class="text-left font-weight-normal">{jarr[3]}</div>
-                                                </div>
-                                            )
-                                        })
-                                    }
+                                    <div className="card col-xs-12 col-sm-6 col-md-6 col-lg-3 mt-3 mb-3 border-0" style={{width: "270px",cursor:"pointer"}} onClick={()=>shopClick(ind1,iind)}>
+                                            <div style={{position:"absolute",zIndex:"30",color:"#FFD100"}}onClick={()=>plusClicked(arr1,iind)}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/></svg></div>
+                                            <img className="card-img-top" src={"/products/"+jarr[0]} alt="loading.." />
+                                            <div class="text-left font-weight-bold">{jarr[1]}</div>
+                                            <div class="text-left font-weight-normal">{"PKR " + jarr[2]}</div>
+                                            <div class="text-left font-weight-normal">{jarr[3]}</div>
                                     </div>
                                 )
                             })
                         }
+                        </div>
                         </div>
                     )
                 })

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { getCategories } from '../actions/markets';
 import { set } from 'mongoose';
 
-
+// "/markets/"+iarr.image
 let Markets = () => {
     const categories = useSelector((state) => state.categories)
     const arr = [['k.png','Fast Food Corner','Pizzas, Burgers, Pasta, etc.'],['k-1.png','Pharmacies','Medicines, Quipment, etc.'],['k-2.png','Fruits and Vegetables','Banana, Apple, Potato, Ginger, etc.'],['k-3.png','Cosmetics and Beauty','Makeup Kits, Ascessories, etc.'],['k-4.png','Pet Shops','Pet food, ascessories, etc.'],['k-5.png','Flower Shops','Bouquets, Lillies, Roses, etc.'],['k-6.png','Dry Fruits and Nuts','Peanuts, Cashew, Almonds, etc.'],['k-7.png','Fresh Meat','Mutton, Chicken, Beef, etc'],['k-8.png','Fish & Sea Food','Fish, Prawns, etc.'],['k-9.png','Bakery & Dairy Products','Milk, Butter, Bread, Eggs, Cereals, Oats, etc.']]
@@ -35,12 +35,12 @@ let Markets = () => {
             <Row style={{gridRowGap: '2rem'}}>
                 {  
                     categories.map((iarr, ind)=>{
+                        console.log(iarr.image)
                         return(
                             <div className="d-flex mt-4">
                             {
-
                             <div className="card m-auto border-0" style={{width: "20rem", padding: '2rem', cursor:'pointer'}} onClick={()=>marketClick(ind,ind)}>
-                                    <img className="card-img" src={"/markets/"+iarr.image} alt="loading..."></img>
+                                    <img className="card-img" src={'http://localhost:8080/'+ iarr.image} alt="loading..."></img>
                                     <div style={{backgroundColor: "#FFD100"}}><a className="btn btn-primary-outline-light" ><strong>{iarr.name}</strong></a></div>
                                     <div className="pt-1">{iarr.description}</div>
                             </div>

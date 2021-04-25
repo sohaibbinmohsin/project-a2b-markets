@@ -14,7 +14,7 @@ connection.once('open', ()=>{
     console.log("MONGODB CONNECTION SUCCESSFUL")
 })
 const app = express();
-app.use('/front-react/public/uploads', express.static('/front-react/public/uploads'))
+app.use('/uploads', express.static('uploads'))
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

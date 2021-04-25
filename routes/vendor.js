@@ -12,7 +12,7 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'front-react/public/uploads/')
+        cb(null, './uploads/')
     },
     filename: (req, file, cb) => {
         cb(null, new Date().toISOString() + file.originalname)

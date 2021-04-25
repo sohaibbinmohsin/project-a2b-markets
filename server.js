@@ -14,7 +14,7 @@ connection.once('open', ()=>{
     console.log("MONGODB CONNECTION SUCCESSFUL")
 })
 const app = express();
-app.use('/uploads', express.static('uploads'))
+app.use('/front-react/public/uploads', express.static('/front-react/public/uploads'))
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }))
 const marketsRouter = require('./routes/markets')
 const contactUsRouter = require('./routes/contactUs')
 const customerRouter = require('./routes/customer')
-const adminRouter = require('./routes/admin')
+const adminRouter = require('./routes/admin.js')
 const passwordUpdateRouter = require('./routes/passwordUpdate')
 const vendorRouter = require('./routes/vendor')
 const location = require('./routes/location.js')
@@ -36,8 +36,8 @@ app.use('/api/user', passwordUpdateRouter)
 app.use('/api/vendor', vendorRouter)
 app.use('/api/location',location)
 app.use('/api/reverse_geocode',reverse_geocode)
-app.use('/api/order',order)
-app.use('/api/admin',adminRouter)
+app.use('/api/order', order)
+app.use('/api/admin', adminRouter)
 
 if (process.env.NODE_ENV === 'production') {
   console.log(`in production`)

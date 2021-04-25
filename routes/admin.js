@@ -1,9 +1,10 @@
 require('dotenv').config()
 const express = require('express')
 const admin = require('../models/admin.model')
-const order = require('../models/order.model')
+const order = require('../models/orders.model')
 const vendor = require('../models/vendor.model')
 const multer = require('multer')
+const auth = require('../middleware/auth')
 
 const router = express.Router()
 
@@ -66,3 +67,5 @@ router.get('/ordersnotconfirmed', auth, async(req, res) => {
         res.status(404).json({message: "Something went wrong."})
     }
 })
+
+module.exports = router

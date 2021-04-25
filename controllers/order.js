@@ -1,6 +1,7 @@
 const shoppingCart = require('../models/shoppingcart.model')
 const order =  require('../models/orders.model.js')
-const customer =  require('../models/customer.model') 
+let customer =  require('../models/customer.model') 
+let nodemailer = require('nodemailer')
 
 exports.addnew = async (req,res) =>{ //order added by customer
     if(!req.userID){ //customer id
@@ -51,10 +52,33 @@ exports.confirmOrder = async (req,res) =>{
         return res.status(404).json({message: "User is not authenticated."})
     }
     const curr_order = await order.findOne({_id: req.params.orderid})
+    const curr_customer = await customer.findOne({_id: curr_order.customer})
+    if(!curr_order || !curr_customer){
+        res.status(404).json({message: "Order not found"})
+    }
     if(curr_order.vendor === req.userID && curr_order.isConfirmed === false){
         curr_order.isConfirmed = true
         curr_order.save()
-        res.status(200).json(curr_order)
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'dummyA2B@gmail.com',
+              pass: 'hello@1234_'
+            }
+          });
+        var mailOptions = {
+            from: 'dummyA2B@gmail.com',
+            to: curr_customer.email_address,
+            subject: 'A2B Markets - Order Confirmed',
+            text: `Your order number: ${curr_order._id} has been confirmed by ${curr_order.vendor_name}. It will be delivered to you soon.`
+        };
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                res.status(200).json({result: curr_order, message: "Email sent to customer!"})
+            }
+          });
     }
     else{
         res.status(404).json({message: "Already confirmed order"})

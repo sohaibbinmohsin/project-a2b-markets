@@ -19,6 +19,8 @@ function SignupScreen(props) {
  
   const submitHandler = (e) => {
     e.preventDefault();
+    var x = document.getElementById("demo");
+    x.style.display="block";
     const body = {
       name: name,
       email_address: email_address,
@@ -73,6 +75,8 @@ function SignupScreen(props) {
           </li>          
           <li>
             <button type="submit" className="button-primary">SIGNUP</button>
+            <br/>
+            <div id="demo" style={{display:'none', textAlign:'center',backgroundColor:'#FFD100',color:'black',width:'100%',padding:'10px',borderRadius:'10px'}}>You will be directed to verification page in a while!!</div>
           </li>
           <li>Already have an account?<a href="/login" style={{color:'#FFD100'}}>Login</a> here</li>
         </ul>

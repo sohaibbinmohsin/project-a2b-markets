@@ -29,6 +29,11 @@ router.post('/signin', async (req,res) =>{
         if(User.isVerified === false){
             return res.status(404).json({message: "Your account has not yet been verified."})
         }
+        if(role === "Vendor"){
+            if(User.approved === false){
+                return res.status(404).json({message: "Your shop has not yet approved by admin."})
+            }
+        } 
         const isCorrectPassword = await bcrypt.compare(password, User.password)
         if(!isCorrectPassword){
             return res.status(404).json({message: "Incorrect password"})

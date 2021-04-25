@@ -13,6 +13,7 @@ const vendorSchema = new Schema({
     logo: {type: String},
     password: {type: String, required: true},
     isVerified: {type: Boolean},
+    approved: {type: Boolean},
     emailToken: {type: String},
     delivery_time: {type: String},
     delivery_charges: {type: String, default: "free"},

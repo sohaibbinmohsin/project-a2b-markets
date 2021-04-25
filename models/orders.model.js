@@ -16,7 +16,7 @@ let orderSchema =  Schema({
     delivery_charges : {type: String, },
     date_ordered : Date,
     date_delivered : Date,
-    isConfirmed : Boolean
+    isConfirmed : Boolean,
 })
 
 const order = mongoose.model('order', orderSchema)

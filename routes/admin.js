@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const bcrypt = require('bcryptjs')
 const admin = require('../models/admin.model')
 const order = require('../models/orders.model')
 const vendor = require('../models/vendor.model')
@@ -15,6 +16,20 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         cb(null, new Date().toISOString() + file.originalname)
     }
+})
+
+router.post('/signup', async (req,res) =>{
+    // console.log(req.file)
+    const{name, email_address, phoneno, password} = req.body
+    const hashedpassword = await bcrypt.hash(password,12)
+    try {
+        const newAdmin = new admin({name, email_address, phoneno, password: hashedpassword, isVerified:true})
+        newAdmin.save()
+        res.status(200).json({message: "profile created"})
+    }catch(err){
+        res.status(404).json({message: "something went wrong", error: err})
+    }
+    
 })
 
 const upload = multer({storage: storage, limits: {
@@ -40,8 +55,9 @@ router.get('/viewvendorreq', auth, async(req, res) => {
 })
 
 router.put('/approvevendor', auth, async(req, res) => {
+    const {_id} = req.body
     try {
-        const Vendor = await vendor.findById({_id: req.userID})
+        const Vendor = await vendor.findById({_id})
         Vendor.approved = true
         Vendor.save()
         res.status(200).json({result: 'vendor approved'})
@@ -52,7 +68,7 @@ router.put('/approvevendor', auth, async(req, res) => {
 
 router.get('/ordersconfirmed', auth, async(req, res) => {
     try {
-        const Orders = await order.find({isconfirmed: true})
+        const Orders = await order.find({isConfirmed: true})
         res.status(200).json({orders: Orders})
     }catch(err){
         res.status(404).json({message: "Something went wrong."})
@@ -61,7 +77,7 @@ router.get('/ordersconfirmed', auth, async(req, res) => {
 
 router.get('/ordersnotconfirmed', auth, async(req, res) => {
     try {
-        const Orders = await order.find({isconfirmed: false})
+        const Orders = await order.find({isConfirmed: false})
         res.status(200).json({orders: Orders})
     }catch(err){
         res.status(404).json({message: "Something went wrong."})

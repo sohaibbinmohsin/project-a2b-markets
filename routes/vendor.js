@@ -61,11 +61,12 @@ router.post('/signup', upload.single('image'), async (req,res) =>{
         }
         let emailToken = crypto.randomBytes(64).toString('hex')
         let isVerified = false
+        let approved = false
         let products = []
         let shop_status = false
         const hashedpassword = await bcrypt.hash(password,12)
         // logo: req.file.path,
-        const newVendor = new vendor({name, shop_name, shop_address, email_address, category_name, logo: req.file.path, phoneno, password: hashedpassword, isVerified, emailToken, products, shop_status})
+        const newVendor = new vendor({name, shop_name, shop_address, email_address, category_name, logo: req.file.path, phoneno, password: hashedpassword, isVerified, emailToken, products, shop_status, approved})
         newVendor.save().then().catch(err => console.log(err))
         // for(let i=0; i < category_name.length; i++)
         // {

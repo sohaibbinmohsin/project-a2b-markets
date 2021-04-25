@@ -6,6 +6,8 @@ let nodemailer = require('nodemailer')
 let auth = require('../middleware/auth')
 let jwt = require('jsonwebtoken')
 let customer =  require('../models/customer.model') 
+const admin = require('../models/admin.model')
+const vendor = require('../models/vendor.model')
 
 const router = express.Router()
 
@@ -14,6 +16,12 @@ router.post('/signin', async (req,res) =>{
     let User;
         if(role==="Customer"){
             User = await customer.findOne({email_address})
+        }
+        else if(role==="Vendor"){
+            User = await vendor.findOne({email_address})
+        }
+        else if(role==="Admin"){
+            User = await admin.findOne({email_address})
         }
         if(!User){
             return res.status(404).json({message: `${role} does not exist`})
@@ -45,6 +53,16 @@ router.post('/reset-password', auth, async(req,res)=>{
             if(!User) return res.status(404).json({message: "This link is not valid for changing password."})
             User.passwordToken = null
         }
+        else if(req.query.role === "Vendor"){
+            User = await vendor.findOne({"passwordToken": req.query.token})
+            if(!User) return res.status(404).json({message: "This link is not valid for changing password."})
+            User.passwordToken = null
+        }
+        else if(req.query.role === "Admin"){
+            User = await admin.findOne({"passwordToken": req.query.token})
+            if(!User) return res.status(404).json({message: "This link is not valid for changing password."})
+            User.passwordToken = null
+        }
     }
     else{
         if(req.body.role === "Customer")
@@ -52,6 +70,18 @@ router.post('/reset-password', auth, async(req,res)=>{
             User = await customer.findOne({_id: req.userID})
             if(!User) return res.status(404).json({message: "Couldnot find this customer"})
             console.log("FOUND CUSTOMER")
+        }
+        else if(req.body.role === "Vendor")
+        {
+            User = await vendor.findOne({_id: req.userID})
+            if(!User) return res.status(404).json({message: "Couldnot find this vendor"})
+            console.log("FOUND VENDOR")
+        }
+        else if(req.body.role === "Admin")
+        {
+            User = await admin.findOne({_id: req.userID})
+            if(!User) return res.status(404).json({message: "Couldnot find this admin"})
+            console.log("FOUND ADMIN")
         }
     }
     const password = req.body.password
@@ -70,6 +100,12 @@ router.post('/forgot-password', async(req,res)=>{
     let passwordToken = crypto.randomBytes(64).toString('hex')
     if(role==="Customer"){
         User = await customer.findOne({email_address})
+    }
+    else if(role==="Vendor"){
+        User = await vendor.findOne({email_address})
+    }
+    else if(role==="Admin"){
+        User = await admin.findOne({email_address})
     }
     if(!User) return res.status(404).json({message: "This user does not exist."})
     User.passwordToken = passwordToken

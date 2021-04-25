@@ -48,7 +48,7 @@ if(fst)
     console.log(products.length)
    let arr2=[]
    arr2.push( <h2 style={{color:'#FFD100'}}>{products[x][0]}<b style={{color:'black',fontSize:'30px'}}>{products[x][1]}</b></h2>)
-   arr2.push(<p><a href="#"><span class="glyphicon glyphicon-minus"></span></a>1<a href="#"><span class="glyphicon glyphicon-plus"></span></a></p>)
+   arr2.push(<div style={{float:'left'}}><a href="#"><span  ><i class="fa fa-plus"></i></span></a>1<a href="#"><span  ><i class="fa fa-minus"></i></span></a></div>)
    arr2.push(<br/>)
    arr2.push(<br/>)
    arr2.push(<br/>)

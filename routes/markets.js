@@ -5,7 +5,7 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './uploads/')
+        cb(null, 'front-react/public/uploads/')
     },
     filename: (req, file, cb) => {
         cb(null, new Date().toISOString() + file.originalname)
@@ -42,8 +42,9 @@ router.get('/:id', async (req,res)=>{
 
 router.post('/add', upload.single('image'), (req,res) =>{
     const name = req.body.name
+    const description = req.body.description
 
-    const newMarket = new market({name, image:req.file.path})
+    const newMarket = new market({name, image:req.file.path, description: description})
     newMarket.save().then(() => res.json('Market added!')).catch(err => res.status(400).json('Error'+err))
 })
 

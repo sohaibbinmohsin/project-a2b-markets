@@ -36,12 +36,7 @@ function VerifyCodeScreen(props) {
             <input type="code" id="code" name="code" placeholder="  Enter verification code" class="form-control" onChange={(e)=>setCode(e.target.value)}/>
 
           </li>
-          
-
           <button type="submit" className="button-primary">SEND</button>
-          
-          
-
 
         </ul>
       </form>

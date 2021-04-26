@@ -5,39 +5,71 @@ import Footer from './footer.js'
 import Navbar from './Navbar.js'
 
 let searchResults = (props) =>{
-    const arr = {
-        "Most Bought" : [["kkk-1.png","Burgur",444,"tasty "],["k-1.png","Burgur",484,"tasty "],["kkk-3.png","Burgur",74,"tasty "]],
-        "Deals" : [["kkk-1.png","Burgur",449,"tasty "],["kkk-1.png","Burgur",44,"tasty "],["kkk-1.png","Burgur",444,"tasty "]],
-        "Burgurs" : [["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "],["kkk-1.png","Burgur",444,"tasty "]]
+
+    const [cat,setCat] = react.useState([])
+    const [name,setName] = react.useState('')
+    const [fst,setFst] = react.useState(true) // have to set to true
+    const [cvr,setCvr] = react.useState('')
+    const [id,setID] = react.useState('')
+    const [alert,setAlert] = react.useState('')
+
+
+    if(!props.location.id)
+    {
+        return(
+            <div className="h2 text-center font-weight-bold m-auto text-danger"> Method Not Allowed! </div>
+        )
     }
 
-    const [cat,setCat] = react.useState(arr)
-    const [name,setName] = react.useState("Burger Lab")
-    const [fst,setFst] = react.useState(false) // have to set to true
-    const [cvr,setCvr] = react.useState('./products/food.png')
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    }
 
     if(fst)
     {
         const data = {}
-        axios.post("http://localhost:3000/products",data) // api call, url to be chnaged
-        .then(res => {
-            setCat(res.data)// data needs to rendered in right format
-            setName("")
-            setFst(false)
-        })
-        .catch(err => console.log(err))
+        setName(props.location.name)
+        setCvr(props.location.logo)
+        setID(props.location.id)
+        let temp = []
+        for(let i=0;i<props.location.products.length;i++)
+        {
+            temp.push(props.location.products[i].section_name)
+        }
+        let unique = temp.filter(onlyUnique);
+
+        let obj = {}
+        for (const key of unique) {
+            obj[key] = [];
+        }
+        for(let i=0;i<props.location.products.length;i++)
+        {
+            obj[props.location.products[i].section_name].push(props.location.products[i])
+        }
+
+        setCat(obj)
+
+        setFst(false)
     }
 
-    const shopClick = (key,i,j) =>{
-        console.log(key,i,j)
+    const shopClick = (key,i) =>{
+        console.log(cat[key][i])
     }
 
     const keyClick = (key) =>{
-        console.log(key)
+        console.log("key clicked:",key)
     }
 
-    const plusClicked = (key,i,j) =>{
-        console.log("Plus Clicked : ",key,i,j)
+    const plusClicked = (key,i) =>{
+        const data = {
+            product_id : cat[key][i]._id,
+            product_name : cat[key][i].name,
+            vendor_id : props.location.id,
+            product_price : cat[key][i].price
+        }
+        axios.post('http://localhost:8080/api/customer/addToCart',data)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
 
     return(
@@ -75,12 +107,12 @@ let searchResults = (props) =>{
                         {
                             cat[arr1].map((jarr,iind)=>{
                                 return(
-                                    <div className="card col-xs-12 col-sm-6 col-md-6 col-lg-3 mt-3 mb-3 border-0" style={{width: "270px",cursor:"pointer"}} onClick={()=>shopClick(ind1,iind)}>
+                                    <div className="card col-xs-12 col-sm-6 col-md-6 col-lg-3 mt-3 mb-3 border-0" style={{width: "270px",cursor:"pointer"}} onClick={()=>shopClick(arr1,iind)}>
                                             <div style={{position:"absolute",zIndex:"30",color:"#FFD100"}}onClick={()=>plusClicked(arr1,iind)}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/></svg></div>
-                                            <img className="card-img-top" src={"/products/"+jarr[0]} alt="loading.." />
-                                            <div class="text-left font-weight-bold">{jarr[1]}</div>
-                                            <div class="text-left font-weight-normal">{"PKR " + jarr[2]}</div>
-                                            <div class="text-left font-weight-normal">{jarr[3]}</div>
+                                            <img className="card-img-top" src={jarr.product_image} alt="loading.." />
+                                            <div class="text-left font-weight-bold">{jarr.name}</div>
+                                            <div class="text-left font-weight-normal">{"PKR " + jarr.price}</div>
+                                            <div class="text-left font-weight-normal">{jarr.description}</div>
                                     </div>
                                 )
                             })

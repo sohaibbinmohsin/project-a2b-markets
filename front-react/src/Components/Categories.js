@@ -5,42 +5,53 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
-import { getCategories } from '../actions/markets';
+import { getCategories, selMarket} from '../actions/markets';
 import { set } from 'mongoose';
+import { Link, Redirect,useHistory} from 'react-router-dom';
 
-// "/markets/"+iarr.image
+
 let Markets = () => {
     const categories = useSelector((state) => state.categories)
-    const arr = [['k.png','Fast Food Corner','Pizzas, Burgers, Pasta, etc.'],['k-1.png','Pharmacies','Medicines, Quipment, etc.'],['k-2.png','Fruits and Vegetables','Banana, Apple, Potato, Ginger, etc.'],['k-3.png','Cosmetics and Beauty','Makeup Kits, Ascessories, etc.'],['k-4.png','Pet Shops','Pet food, ascessories, etc.'],['k-5.png','Flower Shops','Bouquets, Lillies, Roses, etc.'],['k-6.png','Dry Fruits and Nuts','Peanuts, Cashew, Almonds, etc.'],['k-7.png','Fresh Meat','Mutton, Chicken, Beef, etc'],['k-8.png','Fish & Sea Food','Fish, Prawns, etc.'],['k-9.png','Bakery & Dairy Products','Milk, Butter, Bread, Eggs, Cereals, Oats, etc.']]
     const [serverResponse, setServerResponse] = react.useState('')
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const [redirect,setRedirect] = react.useState(false)
+    const [marketID,setID] = react.useState('')
+    const [marketName,setName] = react.useState('')
+    const [cvr,setCvr] = react.useState('')
 
+    const marketClick = (i) => {
+        // console.log(categories[i]._id)
+        setID(categories[i]._id)
+        setName(categories[i].name)
+        setCvr(categories[i].image)
+        // console.log(categories)
+        setRedirect(true)
+    }
 
-
-    const marketClick = (id) => {
-        console.log(categories[id])
-        
-        axios.get(`http://jsonplaceholder.typicode.com/markets/${id}`).then(res => {
-        // console.log(res)
-        const reply = JSON.parse(res)
-        setServerResponse(reply.message)
-        // setToken(reply.token)
-        // setUserID(reply._id)
-        })
+    if(redirect)
+    {
+        history.push({
+            pathname: '/results',
+            id: marketID,
+            name : marketName,
+            cover : cvr
+          });
     }
 
     return (
         <div>
+            {/* { redirect ? (<Redirect push to="/results"/>) : null } */}
             <div style={{fontFamily: 'Roboto'}, {marginTop: '3rem', marginLeft: '8rem'}}>
             {/* <div className="mt-5 mr-5 ml-5" > */}
             <Row style={{gridRowGap: '2rem'}}>
                 {  
                     categories.map((iarr, ind)=>{
-                        console.log(iarr.image)
                         return(
                             <div className="d-flex mt-4">
                             {
                             <div className="card m-auto border-0" style={{width: "20rem", padding: '2rem', cursor:'pointer'}} onClick={()=>marketClick(ind,ind)}>
-                                    <img className="card-img" src={'http://localhost:8080/'+ iarr.image} alt="loading..."></img>
+                                    <img className="card-img" src={"http://localhost:8080/"+iarr.image} alt="loading..."></img>
                                     <div style={{backgroundColor: "#FFD100"}}><a className="btn btn-primary-outline-light" ><strong>{iarr.name}</strong></a></div>
                                     <div className="pt-1">{iarr.description}</div>
                             </div>
@@ -72,7 +83,7 @@ let Markets = () => {
                 <div class="text-center font-weight-normal" style={{fontSize: '2.5vw'}}>Are you a Shop Owner?</div>
                 <div class="text-center font-weight-normal" style={ {fontSize: '2.5vw'}}>Interested in expanding your Network?</div>
                 <div class="d-flex justify-content-center" style={{padding: '1.5rem'}}>
-                <a href = "/VendorSignUp" className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>JOIN US</strong></a>
+                    <button  className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>JOIN US</strong></button>
                 </div>
                 
                 <div class="d-flex justify-content-center" style={{alignItems: 'center'}, {justifyContent: 'center'}, {margin: '3rem'}, {width: '18rem'}}>

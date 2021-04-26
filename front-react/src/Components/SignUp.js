@@ -28,7 +28,6 @@ function SignupScreen(props) {
       password: password,
       confirmPassword: confirmPassword
     }
-    console.log(body)
     dispatch(signup(body,history))
   };
  
@@ -49,29 +48,29 @@ function SignupScreen(props) {
           <li>
             <label>Name</label>
             <br/>
-            <input type="text" name="username" placeholder="  Enter your name" class="form-control" required onChange={(e)=>setUsername(e.target.value)}/>
+            <input type="text" name="username" placeholder="  Enter your name" className="form-control" required onChange={(e)=>setUsername(e.target.value)}/>
           </li>
           <li>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="  Enter your email" class="form-control" required onChange={(e)=>setEmailAddress(e.target.value)}></input>
+            <input type="email" id="email" name="email" placeholder="  Enter your email" className="form-control" required onChange={(e)=>setEmailAddress(e.target.value)}></input>
           </li>
           
           <li>
             <label for="password">Password</label>
             <br/>
-            <input type="password" id="password" name="password" placeholder="  Enter password" class="form-control" required onChange={(e)=>setPassword(e.target.value)}/>
+            <input type="password" id="password" name="password" placeholder="  Enter password" className="form-control" required onChange={(e)=>setPassword(e.target.value)}/>
 
           </li>
           <li>
             <label for="confirm-password"> Confirm Password</label>
             <br/>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="  Enter your password again" class="form-control" required onChange={(e)=>setConfirmPassword(e.target.value)}/>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="  Enter your password again" className="form-control" required onChange={(e)=>setConfirmPassword(e.target.value)}/>
 
           </li>
           <li>
             <label for="phone">Phone Number</label>
             <br/>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="  Enter your phone number" required onChange={(e)=>setPhone(e.target.value)}/>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" className="form-control" placeholder="  Enter your phone number" required onChange={(e)=>setPhone(e.target.value)}/>
 
           </li>          
           <li>

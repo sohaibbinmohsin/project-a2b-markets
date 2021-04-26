@@ -5,6 +5,7 @@ import axios from 'axios'
 import './shopping_cart.css';
 import Footer from './footer.js'
 import './footer.css'
+import Navbar from './Navbar.js'
 
 
 function SignupScreen(props) {
@@ -61,6 +62,7 @@ if(fst)
 
   return (
     <div className="shopping_container">
+             <Navbar/>
         <h3>Your order from Burger Lab</h3>
         <div className="container-1" >
        {

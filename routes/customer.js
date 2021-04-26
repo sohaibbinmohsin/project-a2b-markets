@@ -56,7 +56,6 @@ router.post('/signup', async (req,res) =>{
                 console.log(error);
             } else {
                 res.status(200).json({message: "Thank you for registering. Please check your email to verify your account."})
-                console.log("MESSAGE SENT")
             }
           });
         }catch(err){
@@ -68,9 +67,7 @@ router.post('/signup', async (req,res) =>{
 
 router.post('/verify-email', async(req,res)=>{
     try{
-        console.log("NEEDTOVERIFY")
         const email_token = req.body.token
-        console.log(email_token)
         const Customer = await customer.findOne({emailToken: email_token})
         if(!Customer){
             res.status(404).json({message: "Invalid token"})

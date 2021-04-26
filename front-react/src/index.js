@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Location from './Components/Location.js'
 import reportWebVitals from './reportWebVitals';
 import SignUp from './Components/SignUp'
+import vendorSignUp from './Components/vendorSignUp'
 import Partner from './Components/partner'
 import Verification from './Components/verification'
 import Login from './Components/login'
@@ -32,6 +33,7 @@ ReactDOM.render(
       <Route path="/" exact component={App} />
       <Route path="/location" component={Location} />
       <Route path="/SignUp" component={SignUp} />
+      <Route path="/VendorSignUp" component={vendorSignUp} />
       <Route path="/partner" component={Partner} />
       <Route path="/verification" component={Verification} />
       <Route path="/login" component={Login} />

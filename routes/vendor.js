@@ -66,17 +66,16 @@ router.post('/signup', upload.single('image'), async (req,res) =>{
         let shop_status = false
         const hashedpassword = await bcrypt.hash(password,12)
         // logo: req.file.path,
-        const newVendor = new vendor({name, shop_name, shop_address, email_address, category_name, logo: req.file.path, phoneno, password: hashedpassword, isVerified, emailToken, products, shop_status, approved})
+        const newVendor = new vendor({name, shop_name, shop_address, email_address, category_name, phoneno, password: hashedpassword, isVerified, emailToken, products, shop_status, approved})
         newVendor.save().then().catch(err => console.log(err))
         // for(let i=0; i < category_name.length; i++)
         // {
         //     console.log(category_name[i])
             
         // }
-        const Market = await market.findOne({name: category_name})
-        console.log(Market)
-        Market.vendorIds.push(newVendor._id)
-        Market.save().then().catch(err => console.log(err))
+        // const Market = await market.findOne({name: category_name})
+        // Market.vendorIds.push(newVendor._id)
+        // Market.save().then().catch(err => console.log(err))
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -88,7 +87,7 @@ router.post('/signup', upload.single('image'), async (req,res) =>{
             from: 'dummmy.A2B@gmail.com',
             to: newVendor.email_address,
             subject: 'A2B Markets - Verify email',
-            text: `Thank you for registering on our website. Please click on this link to verify your account. http://${req.headers.host}/vendor/verify-email?token=${newVendor.emailToken}`
+            text: `Thank you for registering on our website. Please copy and paste this code to verify your account. ${newVendor.emailToken}`
         }
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -102,7 +101,9 @@ router.post('/signup', upload.single('image'), async (req,res) =>{
 
 router.get('/verify-email', async(req,res)=>{
     try{
-        const Vendor = await vendor.findOne({emailToken: req.query.token})
+        let etoken = req.body.token
+        console.log(etoken)
+        const Vendor = await vendor.findOne({emailToken: req.body.token})
         if(!Vendor){
             res.status(404).json({message: "Invalid token"})
         }
@@ -110,7 +111,7 @@ router.get('/verify-email', async(req,res)=>{
         Vendor.isVerified = true
         await Vendor.save()
         const token = jwt.sign({email_address: Vendor.email_address, id: Vendor._id, role: 'Vendor'}, process.env.JSON_SECRET_TOKEN, {expiresIn: '2h'})
-        res.status(200).json({result: Vendor,  message:  "Welcome to A2B Markets. Your account has been successfully verified", token})
+        res.status(200).json({result: Vendor,  message:  "Your account has been successfully verified. You will be able to login once Admin approves your account", token})
     }catch(err){
         res.status(404).json({message: "Something went wrong."})
     }

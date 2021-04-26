@@ -28,6 +28,7 @@ function SignupScreen(props) {
       password: password,
       confirmPassword: confirmPassword
     }
+    console.log(body)
     dispatch(signup(body,history))
   };
  
@@ -70,7 +71,7 @@ function SignupScreen(props) {
           <li>
             <label for="phone">Phone Number</label>
             <br/>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control" placeholder="  Enter your phone number" required onChange={(e)=>setPhone(e.target.value)}/>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="  Enter your phone number" required onChange={(e)=>setPhone(e.target.value)}/>
 
           </li>          
           <li>

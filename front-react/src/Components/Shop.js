@@ -76,7 +76,7 @@ let searchResults = (props) =>{
         <div className="container-fluid" style={{fontFamily: 'Roboto'}}>
             <Navbar />
             <div className="mt-n3" style={{height: "450px",width:"100%",overflow:"hidden"}}>
-                <img src={cvr} className="img-fluid w-100"/>
+                <img src={"http://localhost:8080/"+cvr} className="img-fluid w-100"/>
             </div>
             <div className="d-flex float-left ml-4 mt-4">
                 <div className="text-uppercase h2 font-weight-bold">{name}

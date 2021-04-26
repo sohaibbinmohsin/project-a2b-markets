@@ -62,7 +62,7 @@ if(fst)
 
   return (
     <div className="shopping_container">
-             <Navbar/>
+    <Navbar/>
         <h3>Your order from Burger Lab</h3>
         <div className="container-1" >
        {

@@ -8,7 +8,7 @@ const vendorSchema = new Schema({
     shop_name: {type: String, required: true},
     shop_address: {type: String, required: true},
     email_address: {type: String, required: true},
-    phoneno: {type: Number, required: true},
+    phoneno: {type: String, required: true},
     category_name: {type: Array, required: true},
     logo: {type: String},
     password: {type: String, required: true},

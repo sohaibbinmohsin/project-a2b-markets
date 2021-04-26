@@ -99,7 +99,7 @@ router.post('/signup', upload.single('image'), async (req,res) =>{
           })
 })
 
-router.get('/verify-email', async(req,res)=>{
+router.post('/verify-email', async(req,res)=>{
     try{
         let etoken = req.body.token
         console.log(etoken)

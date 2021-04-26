@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
         cb(null, './uploads/')
     },
     filename: (req, file, cb) => {
-        cb(null, new Date().getDate() + file.originalname)
+        cb(null, new Date().toISOString() + file.originalname)
     }
 })
 
@@ -104,13 +104,14 @@ router.post('/verify-email', async(req,res)=>{
     try{
         let etoken = req.body.token
         console.log(etoken)
-        const Vendor = await vendor.findOne({emailToken: req.body.token})
+        const Vendor = await vendor.findOne({emailToken: etoken})
         if(!Vendor){
             res.status(404).json({message: "Invalid token"})
         }
+        console.log("VENDOR CORRECT")
         Vendor.emailToken = null
         Vendor.isVerified = true
-        await Vendor.save()
+        Vendor.save()
         const token = jwt.sign({email_address: Vendor.email_address, id: Vendor._id, role: 'Vendor'}, process.env.JSON_SECRET_TOKEN, {expiresIn: '2h'})
         res.status(200).json({result: Vendor,  message:  "Your account has been successfully verified. You will be able to login once Admin approves your account", token})
     }catch(err){

@@ -23,6 +23,11 @@ function LoginScreen(props) {
     }
     dispatch(signin(body, history))
   }
+  const changeRole=(e)=>
+{
+  e.preventDefault();
+ setRole(e.target.value)
+}
  
 
   return (
@@ -54,12 +59,12 @@ function LoginScreen(props) {
           <li>
             <label >Login as </label>
             <br/>
-            <select name="Choose option" id="Choose Option">
-            <option value="Customer" onClick={(e)=>setRole('Customer')}>Customer</option>
-            <option value="Vendor" onClick={(e)=>setRole('Vendor')}>Vendor</option>
-            <option value="Admin" onClick={(e)=>setRole('Admin')}>Admin</option>
+            <select name="Choose option" id="Choose Option" onChange={changeRole}>
+            <option value="Customer" >Customer</option>
+            <option value="Vendor"  >Vendor</option>
+            <option value="Admin">Admin</option>
             
-          </select>
+            </select>
 
           </li>
 

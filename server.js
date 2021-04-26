@@ -14,13 +14,13 @@ connection.once('open', ()=>{
     console.log("MONGODB CONNECTION SUCCESSFUL")
 })
 const app = express();
-// app.use('/uploads/*', express.static('uploads'))
-app.use(express.static('uploads'));
+app.use('/uploads', express.static('uploads'))
+// app.use('/uploads', express.static('uploads'));
 
-app.get('/uploads/*', (req, res) => {
-	console.log(__dirname)
-	res.sendFile(path.join(__dirname, req.url));
-});
+// app.get('/uploads/*', (req, res) => {
+// 	console.log(__dirname)
+// 	res.sendFile(path.join(__dirname, req.url));
+// });
 
 app.use(cors());
 app.use(express.json())

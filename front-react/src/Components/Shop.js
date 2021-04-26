@@ -109,7 +109,7 @@ let searchResults = (props) =>{
                                 return(
                                     <div className="card col-xs-12 col-sm-6 col-md-6 col-lg-3 mt-3 mb-3 border-0" style={{width: "270px",cursor:"pointer"}} onClick={()=>shopClick(arr1,iind)}>
                                             <div style={{position:"absolute",zIndex:"30",color:"#FFD100"}}onClick={()=>plusClicked(arr1,iind)}><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/></svg></div>
-                                            <img className="card-img-top" src={jarr.product_image} alt="loading.." />
+                                            <img className="card-img-top" src={"http://localhost:8080/"+jarr.product_image} alt="loading.." />
                                             <div class="text-left font-weight-bold">{jarr.name}</div>
                                             <div class="text-left font-weight-normal">{"PKR " + jarr.price}</div>
                                             <div class="text-left font-weight-normal">{jarr.description}</div>

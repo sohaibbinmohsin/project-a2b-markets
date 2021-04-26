@@ -21,7 +21,7 @@ function SignupScreen(props) {
 
  
   const submitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const body = {
       name: name,
       shop_name: shop_name,
@@ -32,6 +32,7 @@ function SignupScreen(props) {
       password: password,
       confirmPassword: confirmPassword
     }
+    console.log(body)
     dispatch(signupVendor(body,history))
   };
  
@@ -89,7 +90,7 @@ function SignupScreen(props) {
           <li>
             <label for="phone">Phone Number</label>
             <br/>
-            <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control" placeholder="  Enter your phone number" onChange={(e)=>setPhone(e.target.value)}/>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" class="form-control" placeholder="  Enter your phone number" onChange={(e)=>setPhone(e.target.value)}/>
 
           </li>          
           <li>
@@ -101,10 +102,11 @@ function SignupScreen(props) {
       <div>
             <p>{serverResponse}</p>
       </div>
-
-      
+      </div>
     </div>
-    </div>
+<div className="navbar navbar-default navbar-static-bottom navbar-fixed-bottom">
+                <Footer />
+            </div>
     </body>
     
    

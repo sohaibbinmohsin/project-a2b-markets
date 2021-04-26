@@ -39,6 +39,7 @@ function VerifyCodeScreen(props) {
           
 
           <button type="submit" className="button-primary">SEND</button>
+          {/* <a href="/vendorShop" type="submit" className="button-primary">SEND</a> */}
           
           
 

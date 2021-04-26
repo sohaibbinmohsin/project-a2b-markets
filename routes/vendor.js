@@ -41,8 +41,9 @@ router.get('/', async (req,res)=>{
     .then(vendor => res.json(vendor))
     .catch(err => res.status(400).json('Error' + err))
 })
+// upload.single('image'),
 
-router.post('/signup', upload.single('image'), async (req,res) =>{
+router.post('/signup', upload.single('image'),async (req,res) =>{
     // console.log(req.file)
     const{shop_name, name, shop_address, email_address, category_name, phoneno, password, confirmPassword} = req.body
         const existingVendor =  await vendor.findOne({email_address})
@@ -66,7 +67,7 @@ router.post('/signup', upload.single('image'), async (req,res) =>{
         let shop_status = false
         const hashedpassword = await bcrypt.hash(password,12)
         // logo: req.file.path,
-        const newVendor = new vendor({name, shop_name, shop_address, email_address, category_name, phoneno, password: hashedpassword, isVerified, emailToken, products, shop_status, approved})
+        const newVendor = new vendor({name, shop_name, shop_address, email_address, category_name, logo: req.file.path, phoneno, password: hashedpassword, isVerified, emailToken, products, shop_status, approved})
         newVendor.save().then().catch(err => console.log(err))
         // for(let i=0; i < category_name.length; i++)
         // {

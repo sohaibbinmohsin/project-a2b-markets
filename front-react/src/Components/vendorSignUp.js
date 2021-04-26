@@ -92,9 +92,17 @@ function SignupScreen(props) {
             <br/>
             <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" class="form-control" placeholder="  Enter your phone number" onChange={(e)=>setPhone(e.target.value)}/>
 
+          </li>
+          <li>
+            <label for="image">Logo</label>
+            <br/>
+            <input type="file" id="image" name="filename"/>
+            {/* <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" class="form-control" placeholder="  Enter your phone number" onChange={(e)=>setPhone(e.target.value)}/> */}
+
           </li>          
           <li>
             <button type="submit" className="button-primary">SIGNUP</button>
+            {/* <a href="Vendor_signUp_verification" type="submit" className="button-primary">SIGNUP</a> */}
           </li>
           <li>Already have an account?<a href="/login" style={{color:'#FFD100'}}>Login</a> here</li>
         </ul>

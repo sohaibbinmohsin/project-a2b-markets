@@ -83,7 +83,8 @@ let Markets = () => {
                 <div class="text-center font-weight-normal" style={{fontSize: '2.5vw'}}>Are you a Shop Owner?</div>
                 <div class="text-center font-weight-normal" style={ {fontSize: '2.5vw'}}>Interested in expanding your Network?</div>
                 <div class="d-flex justify-content-center" style={{padding: '1.5rem'}}>
-                    <button  className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>JOIN US</strong></button>
+                    {/* <button  className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>JOIN US</strong></button> */}
+                    <a href="/VendorSignUp" className="btn btn-primary-outline-light" style={{backgroundColor: "#FFD100"}}><strong>JOIN US</strong></a>
                 </div>
                 
                 <div class="d-flex justify-content-center" style={{alignItems: 'center'}, {justifyContent: 'center'}, {margin: '3rem'}, {width: '18rem'}}>
@@ -100,9 +101,7 @@ let Markets = () => {
                     </button>
                     <div>Automate and organize your procedures</div>
                     </div>
-
                 </div>
-
                 <div className="table-points" style={{width: '16rem'}}>
                     <div>
                         <img src="/img/partner.jpg" alt="loading..."></img>

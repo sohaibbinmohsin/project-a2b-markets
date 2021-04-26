@@ -22,7 +22,6 @@ function App() {
 
   return (
     <div>
-    <Router>
       <Navbaar />
       {/* <GlobalStyle /> */}
       <div className="searchBox">
@@ -33,7 +32,6 @@ function App() {
       <Markets />
       <Categories />
       <Footer />
-    </Router>
     </div>
   );
 }
